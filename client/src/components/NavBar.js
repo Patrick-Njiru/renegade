@@ -26,11 +26,9 @@ function Navbar() {
             <h2><a href='/dashboard'>Log out</a></h2>
           </div>
         </div>
-      </div>
-        
-       
+      </div> 
     </>
-  )
+  );
 }
 
 export default Navbar;
