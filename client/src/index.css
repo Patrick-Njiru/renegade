@@ -1,7 +1,7 @@
 /* CreateProjectForm */
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 body{
-      background: #A7D7C5;
+      background: #52927b;
       object-fit: fill;
 }
 .main {
@@ -16,9 +16,18 @@ body{
     min-height: 100vh;
 }
 
-.home-container p{
+.home-container h2{
 text-align: center;
+font-size: 30px;
+color: rgba(0, 0, 0, 0.877);
 }
+
+.home-container p{
+  text-align: center;
+
+}
+
+
 
 
 

@@ -1,8 +1,9 @@
 class DeveloperSessionsController < ApplicationController
 
   def create
-    developer= Developer.find_by(username: params[:username])
-    if developer&.authenticate(params[:password])
+    developer = Developer.find_by(username: params[:username])
+
+    if developer && developer.authenticate(params[:password])
       session[:user_id] = developer.id
       render json: developer
     else
@@ -15,4 +16,3 @@ class DeveloperSessionsController < ApplicationController
     head :no_content, status: :no_content
   end
 end
-#

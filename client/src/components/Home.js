@@ -7,7 +7,7 @@ import LoginForm from './LoginForm'
 const Home = () => {
   return (
     <>
-    <LoginForm />
+    <LoginForm/>
     </>
   )
 }
