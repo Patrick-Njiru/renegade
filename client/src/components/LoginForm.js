@@ -29,9 +29,9 @@ function LoginForm() {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({formData})
+      body: JSON.stringify(formData)
     })
-    .then((res) => console.log(res))
+    .then((res) => console.log(res.json()))
 
 
     setFormData({
