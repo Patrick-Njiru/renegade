@@ -21,6 +21,6 @@ class DevelopersController < ApplicationController
     private
 
     def developer_params
-        param.permit (developer, :password)
+        params.permit (developer, :password)
     end
 end
