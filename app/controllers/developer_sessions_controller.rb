@@ -4,6 +4,8 @@ class DeveloperSessionsController < ApplicationController
     developer = Developer.find_by(username: params[:username])
     
     if developer&.authenticate(params[:password])
+
+    if developer && developer.authenticate(params[:password])
       session[:user_id] = developer.id
       render json: developer
     else
