@@ -37,6 +37,7 @@ function CreateProjectForm() {
     <div className="main">
     <div className="create-project-form-container">
       <form className="create-project-form" onSubmit={handleSubmit}>
+      <h2> Create new Project </h2>
         <input className="form-field" placeholder="Title" name="title" value={formData.title} onChange={handleChange} />
         <input className="form-field" placeholder="Descritpion" name="description" value={formData.description} onChange={handleChange} />
         <input className="form-field" placeholder="Deadline" name="deadline" value={formData.deadline} onChange={handleChange} />
