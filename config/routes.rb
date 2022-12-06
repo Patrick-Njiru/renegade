@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   delete '/logout/logout', to: 'developer_sessions#destroy'
   post '/login/project_manager', to: 'project_manager_sessions#create'
   delete '/logout/project_manager', to: 'project_manager_sessions#destroy'
+  get '/me', to: 'user#show'
 
   # Defines the root path route ("/")
   # root "articles#index"

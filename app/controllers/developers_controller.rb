@@ -7,12 +7,13 @@ class DevelopersController < ApplicationController
     end
 
     def show
-        developer = Developer.find(session[:developer_id])
-        render json: developer
+        developer = Developer.find(session[:user_id])
+        render json:developers
     end
 
     def create
         developer = Developer.create!(developer_params)
+        session[user_id]
         render json: developer, status: :created
     end
 
