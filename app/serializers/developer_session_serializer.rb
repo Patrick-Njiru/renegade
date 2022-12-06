@@ -1,3 +1,3 @@
 class DeveloperSessionSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :username, :email, :profile_pic
 end
