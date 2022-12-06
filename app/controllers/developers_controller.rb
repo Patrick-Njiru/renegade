@@ -12,12 +12,8 @@ class DevelopersController < ApplicationController
     end
 
     def create
-        developer = Developer.create(developer_params)
-        if developer.valid?
-            render json: developer, status: :created
-        else 
-            render json: {errors: developer.errors.full_messages}, status: :unprocessable_entity
-        end
+        developer = Developer.create!(developer_params)
+        render json: developer, status: :created
     end
 
     private
