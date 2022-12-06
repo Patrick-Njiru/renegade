@@ -4,6 +4,7 @@ class CreateProjectManagers < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :email
       t.string :profile_pic
+      t.string :password
 
       t.timestamps
     end
