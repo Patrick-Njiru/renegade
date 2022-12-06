@@ -2,13 +2,13 @@ class DevelopersController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     def index
-        developer = Developer.all
+        developers = Developer.all
         render json:developers
     end
 
     def show
         developer = Developer.find(session[:developer_id])
-        render json:developers
+        render json: developer
     end
 
     def create
@@ -19,7 +19,7 @@ class DevelopersController < ApplicationController
     private
 
     def developer_params
-        params.permit (:username, :email, :profile_pic, :password)
+        params.permit(:username, :email, :profile_pic, :password)
     end
 
     def render_unprocessable_entity_response(invalid)
