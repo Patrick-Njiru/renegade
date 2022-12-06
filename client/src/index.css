@@ -7,6 +7,7 @@
     height: 100vh;
     position: relative;
     transition: 0.4s;
+    display: inline-block;
 }
 
 .nav-upper, .nav-heading{
@@ -34,7 +35,7 @@
     justify-content: center;
 }
 .dev-name{
-    margin-left: 5px;
+    margin-left: 5px 5px;
 }
 
 .nav-brand{
@@ -96,9 +97,15 @@
 
 /* project section for developers dashboard starts */
 .project-container{
-    background-color: black;
+    background: #D9D9D9;
+    display: inline-block;
+    margin-left: 400px;
+    width: 60%;
+    height: 85vh;
 }
+
+
 .project-container h1{
-    color: white;
+    color: black;
 }
 /* project section for developers dashboard end*/
