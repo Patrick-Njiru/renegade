@@ -48,9 +48,7 @@ function LoginForm() {
       
         <div className="main">
         <div className="create-project-form-container">
-        <h2>RENEGADE</h2>
-        <img src=""></img>
-        <p>A project management tool to help keep your company's projects organized</p>
+        <h2>RENEGADE</h2>        <p>A project management tool to help keep your company's projects organized</p>
 
           <form className="create-project-form" onSubmit={handleSubmit}>
             <input type="text" className="form-field" placeholder="Username" name="username" value={formData.username} onChange={handleChange} />
