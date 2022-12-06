@@ -33,20 +33,28 @@ function LoginForm() {
   }
 
   return (
-    <div className="main">
-    <div className="create-project-form-container">
-      <form className="create-project-form" onSubmit={handleSubmit}>
-        <input className="form-field" placeholder="Username" name="username" value={formData.title} onChange={handleChange} />
-        <input className="form-field" placeholder="Password" name="password" value={formData.description} onChange={handleChange} />
-       
-        <button className="form-field"> Login as Developer </button>
-        <button className="form-field"> Signup as Developer </button>
-        <button className="form-field"> Login as Manager </button>
+    <>
+    <div className="home-container">
+    
+      
+        <div className="main">
+        <p>RENEGADE</p>
+        <div className="create-project-form-container">
+        
+          <form className="create-project-form" onSubmit={handleSubmit}>
+            <input className="form-field" placeholder="Username" name="username" value={formData.title} onChange={handleChange} />
+            <input className="form-field" placeholder="Password" name="password" value={formData.description} onChange={handleChange} />
+          
+            <button className="form-field"> Login as Developer </button>
+            <button className="form-field"> Signup as Developer </button>
+            <button className="form-field"> Login as Manager </button>
 
 
-      </form>
-    </div>
-    </div>
+          </form>
+        </div>
+        </div>
+        </div>
+    </>
   )
 }
 

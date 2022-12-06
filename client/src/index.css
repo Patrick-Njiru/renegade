@@ -1,13 +1,26 @@
 /* CreateProjectForm */
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
+body{
+      background: #A7D7C5;
+      object-fit: fill;
+}
 .main {
-  background: #A7D7C5;
-  display: flex;
-  min-height: 100vh;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
+  margin-top: 50px
+
 }
+
+.home-container {
+    min-height: 100vh;
+}
+
+.home-container p{
+text-align: center;
+}
+
+
 
 .create-project-form-container {
   width: 360px;
