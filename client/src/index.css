@@ -1,0 +1,83 @@
+
+
+/* Navbar starts here */
+.nav-container{
+    background-color: #E5E5E5;
+    width: 300px;
+    height: 100vh;
+    position: relative;
+    transition: 0.4s;
+
+}
+
+.nav-upper, .nav-heading{
+    display: grid;
+    
+}
+.company-name{
+    color: #B4CD93;
+    height: 75px;
+    font-size: 40px;
+    text-align: center;
+    font-weight:1000;
+    font-style: italic; 
+}
+.nav-heading{
+    grid-template-columns: 2fr, 1fr;
+    grid-template-rows: 1fr;
+    height: 75px;
+    margin-top: 120px;
+    justify-content: center;
+}
+.dev-name{
+    margin-left: 5px;
+}
+
+.nav-brand{
+    display: flex;
+}
+
+.nav-brand img{
+    width: 30px;
+    padding: 0 10px;
+    margin-right: 5px;
+}
+
+.dev-id{
+    margin-top: 60px;
+    margin-right: 10px;
+    font-size: 10px;
+    
+}
+
+.hamburger{
+    position: absolute;
+    right: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: auto -35px;
+    background-color: var(--primary);
+    border: 2px solid var(--light);
+    padding: 20px;
+    border-radius: 90px;
+    height: 71px;
+    width: 74px;
+}
+
+.Dash{
+    margin-top: 250px;
+    text-align: center;
+}
+.nav-dash{
+    margin-top: 200px;
+    text-align: center;
+}
+
+.nav-dash img{
+    width: 30px;
+    padding: 0 10px;
+    margin-right: 5px;
+}
+
+/* Navbar ends here */
