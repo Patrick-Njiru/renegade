@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :projects, only:[:index, :show] 
+  resources :project_managers, only: [:index, :show]
+  resources :developers, only:[:index, :show, :create]
+  get '/login/developer', to: 'developer_sessions#create'
+  delete '/logout/logout', to: 'developer_sessions#destroy'
+  get '/login/project_manager', to: 'project_manager_sessions#create'
+  delete '/logout/project_manager', to: 'project_manager_sessions#destroy'
 
   # Defines the root path route ("/")
   # root "articles#index"

@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <>
       <Router>
             <Switch>
               <Route exact  path="/"> <Home /> </Route>
@@ -16,8 +15,13 @@ function App() {
               <Route exact path="/manager"> <Manager /> </Route>
             </Switch>
       </Router>
-    </>
   );
+import NavBar from './components/NavBar'
+
+function App() {
+  return (
+    <NavBar/>
+  )
 }
 
-export default App;
+export default App
