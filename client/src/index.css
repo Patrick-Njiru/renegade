@@ -7,7 +7,6 @@
     height: 100vh;
     position: relative;
     transition: 0.4s;
-
 }
 
 .nav-upper, .nav-heading{
@@ -15,12 +14,17 @@
     
 }
 .company-name{
+    text-decoration: none; 
     color: #B4CD93;
     height: 75px;
     font-size: 40px;
     text-align: center;
     font-weight:1000;
     font-style: italic; 
+}
+
+.nav-heading h1 a{
+    text-decoration: none;
 }
 .nav-heading{
     grid-template-columns: 2fr, 1fr;
@@ -72,12 +76,29 @@
 .nav-dash{
     margin-top: 200px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-dash img{
     width: 30px;
     padding: 0 10px;
     margin-right: 5px;
+
+}
+.nav-dash h2 a{
+    text-decoration: none; 
+
 }
 
 /* Navbar ends here */
+
+/* project section for developers dashboard starts */
+.project-container{
+    background-color: black;
+}
+.project-container h1{
+    color: white;
+}
+/* project section for developers dashboard end*/
