@@ -1,11 +1,11 @@
 import React from 'react'
 import MyProjects from './MyProjects'
 
-function Developer() {
+function Developer( { userProps }) {
   return (
     <>
       <div>Developer</div>
-      <MyProjects />
+      <MyProjects userProps = {userProps} />
     </>
 
   )

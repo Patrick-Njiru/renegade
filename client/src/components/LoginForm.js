@@ -2,44 +2,25 @@ import React from "react";
 import { useState } from "react";
 import { Link } from 'react-router-dom'
 
+function LoginForm( { getUserProps }) {
+  const [formData, setFormData] = useState({ username:"", password:"" })
 
-function LoginForm() {
-  const [formData, setFormData] = useState({
-    username:"",
-    password:"",
-   
-  })
+  function handleChange(e){ setFormData({ ...formData, [e.target.name]: e.target.value }) }
 
-
-  function handleChange(e){
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
-
-  // When form is submitted, create a new project with the 
-  // details in the formData. 
   function handleSubmit(e) {
     e.preventDefault();
-    // console.log(formData)
     
     fetch("/login/developer", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({formData})
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData)
     })
-    .then((res) => console.log(res))
+    .then((res) => res.json())
+    .then(getUserProps)
 
-
-    setFormData({
-      username:"",
-      password:"",
-    })
-
+    setFormData({ username:"", password:"" })
   }
+
 
   return (
     <>
@@ -57,7 +38,7 @@ function LoginForm() {
             <input type="text" className="form-field" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
           
             <button className="form-field"> Login as Developer </button>
-            <button className="form-field"> Signup as Developer </button>
+            <button className="form-field"> <Link to = "/signup-form"> Signup as Developer </Link></button>
             <button className="form-field"> Login as Manager </button>
 
 
