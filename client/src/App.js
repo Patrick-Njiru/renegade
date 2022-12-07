@@ -12,14 +12,14 @@ function App() {
   return (
       <Router>
         {/* <NavBar /> */}
-            <Routes>
-              <Route exact path="/" element={<Home />} /> 
-              <Route path="/developer" element={<Developer />} />
-              <Route path="/project_manager" element={<Manager />} />
-              <Route path="/signup" element={<SignupForm />} />
-              <Route path="/d-login" element={<DeveloperLoginForm />} />
-              <Route path="/pm-login" element={<ProjectManagerLoginForm />} />
-            </Routes>
+        <Routes>
+          <Route exact path="/" element={<Home />} /> 
+          <Route path="/developer" element={<Developer />} />
+          <Route path="/project_manager" element={<Manager />} />
+          <Route path="/signup" element={<SignupForm />} />
+          <Route path="/d-login" element={<DeveloperLoginForm />} />
+          <Route path="/pm-login" element={<ProjectManagerLoginForm />} />
+        </Routes>
       </Router>
   );
 
