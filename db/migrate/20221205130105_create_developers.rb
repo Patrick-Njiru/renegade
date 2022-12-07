@@ -5,6 +5,7 @@ class CreateDevelopers < ActiveRecord::Migration[7.0]
       t.string :email
       t.string :profile_pic
       t.string :password_digest
+      t.string :password_confirmation_digest
 
       t.timestamps
     end

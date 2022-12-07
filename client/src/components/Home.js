@@ -1,14 +1,16 @@
 import React from 'react'
-import LoginForm from './LoginForm'
-
-// import CreateProjectForm from './CreateProjectForm'
+import { NavLink } from 'react-router-dom'
 
 
 const Home = () => {
   return (
-    <>
-    <LoginForm/>
-    </>
+    <div id='homepage'>
+      <h2>
+        Please select your position in the organization: <br />
+      </h2>
+      <NavLink to='/d-login'>I am a Developer</NavLink> <br />
+      <NavLink to='/pm-login'>I am a Project Manager</NavLink>
+    </div>
   )
 }
 
