@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 const Home = () => {
   return (
-    <div>
+    <div id='homepage'>
       <h2>
         Please select your position in the organization: <br />
       </h2>
