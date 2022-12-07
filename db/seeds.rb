@@ -1,13 +1,25 @@
 puts "🌱 Seeding..."
 
     
-    10.times{ ProjectManager.create(name: Faker::Name.unique.name, email: Faker::Internet.unique.email(domain: 'solutech.com')), profile_pic: faker.image.avatar(): string }
+    10.times{ ProjectManager.create(
+        username: Faker::Name.unique.name, 
+        email: Faker::Internet.unique.email(domain: 'solutech.com'), 
+        profile_pic: Faker::Name.unique.name,
+        password: Faker::Name.unique.first_name
+        )
+    }
 
-10.times{ Developer.create!( name: Faker::Name.unique.name, email: Faker::Internet.unique.email(domain: 'solutech.com'), profile_pic: faker.image.avatar(): string / Faker::LoremFlickr.unique.image)}
+10.times{ Developer.create!( 
+    username: Faker::Name.unique.name, 
+    email: Faker::Internet.unique.email(domain: 'solutech.com'), 
+    profile_pic: Faker::Name.unique.name,
+    password: Faker::Name.unique.first_name
+    )
+}
 
 # Add developer job/department(optional).
 
-30.times{
+10.times{
     Project.create!(
         title: Faker::Game.unique.title, 
         description:  Faker::Lorem.unique.paragraph(sentence_count: rand(4..8)),
