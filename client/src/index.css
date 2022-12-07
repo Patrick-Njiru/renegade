@@ -38,6 +38,7 @@ color: rgba(0, 0, 0, 0.877);
   margin: auto;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   padding: 10px;
+  color: #666666;
 }
 
 .create-project-form {
