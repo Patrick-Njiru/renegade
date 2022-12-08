@@ -1,23 +1,26 @@
 import React from 'react'
-import Home from "./components/Home";
-import Developer from './components/Developer';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Home from './components/Home';
 import Manager from './components/Manager';
-import NavBar from './components/NavBar'
-
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-
+import Developer from './components/Developer';
+import SignupForm from './components/SignupForm';
+import ProjectManagerLoginForm from './components/ProjectManagerLoginForm';
+import DeveloperLoginForm from './components/DeveloperLoginForm.js';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <>
       <Router>
-        <NavBar />
-        <Route exact  path="/"> <Home /> </Route>
-        <Route exact path="/developer"> <Developer /> </Route>
-        <Route exact path="/manager"> <Manager /> </Route>
-
+        {/* <NavBar /> */}
+        <Routes>
+          <Route exact path="/" element={<Home />} /> 
+          <Route path="/developer" element={<Developer />} />
+          <Route path="/project_manager" element={<Manager />} />
+          <Route path="/signup/developer" element={<SignupForm />} />
+          <Route path="/login/developer" element={<DeveloperLoginForm />} />
+          <Route path="/login/project_manager" element={<ProjectManagerLoginForm />} />
+        </Routes>
       </Router>
-    </>
   );
 }
 

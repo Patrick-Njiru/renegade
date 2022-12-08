@@ -5,7 +5,7 @@ class ProjectManagersController < ApplicationController
     end
 
     def show
-        Projectmanagers = Project_Manger.find(params[:id])
+        Projectmanagers = Project_Manger.find(session[user_id])
         render json: Projectmanagers
     end
 end

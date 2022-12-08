@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_184439) do
     t.string "email"
     t.string "profile_pic"
     t.string "password_digest"
+    t.string "password_confirmation_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -24,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_184439) do
     t.string "username"
     t.string "email"
     t.string "profile_pic"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,6 +1,8 @@
 class ProjectManagerSessionsController < ApplicationController
+  
   def create
     project_manager= ProjectManager.find_by(username: params[:username])
+    
     if project_manager&.authenticate(params[:password])
       session[:user_id] = project_manager.id
       render json: project_manager
