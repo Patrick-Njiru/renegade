@@ -1,9 +1,5 @@
 /* CreateProjectForm */
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-body{
-      background: #52927b;
-      object-fit: fill;
-}
 .main {
   /* display: flex; */
   justify-content: center;
@@ -12,7 +8,7 @@ body{
 
 }
 
-.home-container {
+/* .home-container {
     min-height: 100vh;
 }
 
@@ -25,7 +21,12 @@ color: rgba(0, 0, 0, 0.877);
 .home-container p{
   text-align: center;
 
-}
+} */
+/* HOMEPAGE */
+/* .homepage text{
+text-align: center;
+color: red;
+} */
 
 
 
@@ -38,6 +39,7 @@ color: rgba(0, 0, 0, 0.877);
   margin: auto;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   padding: 10px;
+  color: #666666;
 }
 
 .create-project-form {
@@ -127,7 +129,7 @@ button:disabled {
     height: 100vh;
     position: relative;
     transition: 0.4s;
-
+    display: inline-block;
 }
 
 .nav-upper, .nav-heading{
@@ -135,12 +137,17 @@ button:disabled {
     
 }
 .company-name{
+    text-decoration: none; 
     color: #B4CD93;
     height: 75px;
     font-size: 40px;
     text-align: center;
     font-weight:1000;
     font-style: italic; 
+}
+
+.nav-heading h1 a{
+    text-decoration: none;
 }
 .nav-heading{
     grid-template-columns: 2fr, 1fr;
@@ -150,7 +157,7 @@ button:disabled {
     justify-content: center;
 }
 .dev-name{
-    margin-left: 5px;
+    margin-left: 5px 5px;
 }
 
 .nav-brand{
@@ -192,12 +199,35 @@ button:disabled {
 .nav-dash{
     margin-top: 200px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-dash img{
     width: 30px;
     padding: 0 10px;
     margin-right: 5px;
+
+}
+.nav-dash h2 a{
+    text-decoration: none; 
+
 }
 
 /* Navbar ends here */
+
+/* project section for developers dashboard starts */
+.project-container{
+    background: #D9D9D9;
+    display: inline-block;
+    margin-left: 400px;
+    width: 60%;
+    height: 85vh;
+}
+
+
+.project-container h1{
+    color: black;
+}
+/* project section for developers dashboard end*/

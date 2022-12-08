@@ -13,14 +13,14 @@ class DevelopersController < ApplicationController
 
     def create
         developer = Developer.create!(developer_params)
-        session[user_id]
+        session[:user_id] = developer.id
         render json: developer, status: :created
     end
 
     private
 
     def developer_params
-        params.permit(:username, :email, :profile_pic, :password)
+        params.permit(:username, :email, :profile_pic, :password, :password_confirmation)
     end
 
     def render_unprocessable_entity_response(invalid)
