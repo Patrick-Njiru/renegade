@@ -1,9 +1,5 @@
 /* CreateProjectForm */
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-body{
-      background: #52927b;
-      object-fit: fill;
-}
 .main {
   /* display: flex; */
   justify-content: center;
@@ -12,7 +8,7 @@ body{
 
 }
 
-.home-container {
+/* .home-container {
     min-height: 100vh;
 }
 
@@ -25,7 +21,12 @@ color: rgba(0, 0, 0, 0.877);
 .home-container p{
   text-align: center;
 
-}
+} */
+/* HOMEPAGE */
+/* .homepage text{
+text-align: center;
+color: red;
+} */
 
 
 
@@ -38,6 +39,7 @@ color: rgba(0, 0, 0, 0.877);
   margin: auto;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   padding: 10px;
+  color: #666666;
 }
 
 .create-project-form {

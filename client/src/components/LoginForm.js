@@ -1,13 +1,14 @@
-import React from "react";
-import { useState } from "react";
-import { NavLink } from 'react-router-dom'
+import React, { useState } from "react";
+import { NavLink, useNavigate } from 'react-router-dom'
 
-function LoginForm( {position} ) {
+function LoginForm( {position, setUser} ) {
+
+  const [errors, setErrors] = useState(null)
   const [formData, setFormData] = useState({
     username:"",
     password:"",
-   
   })
+  const navigate = useNavigate()
 
   function handleChange(e){
     setFormData({
@@ -16,8 +17,6 @@ function LoginForm( {position} ) {
     })
   }
 
-  // When form is submitted, create a new project with the 
-  // details in the formData. 
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -27,9 +26,14 @@ function LoginForm( {position} ) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(formData)
+    }).then(r => {
+      if (r.ok) {
+        r.json().then(user => setUser(user))
+        navigate(`/${position}`)
+      } else {
+        r.json().then(err => setErrors(err.errors))
+      }
     })
-    .then(res => res.json())
-    .then(console.log)
 
     setFormData({
       username:"",
@@ -40,11 +44,12 @@ function LoginForm( {position} ) {
   const buttons = (position === 'developer') ? (
     <>
       <button className="form-field" > Login </button>
-      <button className="form-field" > 
-        <NavLink className="form-field" to="/signup"> 
+        <p>
+          Don't have an account? &emsp;
+          <NavLink style={{textDecoration: 'none'}} to="/signup/developer"> 
           Signup 
         </NavLink>
-      </button>
+        </p>
     </>
   ) :
   (<button className="form-field" > Login </button>)
@@ -58,8 +63,9 @@ function LoginForm( {position} ) {
           <p>A project management tool to help keep your company's projects organized</p>
           <form className="create-project-form" onSubmit={handleSubmit}>
             <input type="text" className="form-field" placeholder="Username" name="username" value={formData.username} onChange={handleChange} />
-            <input type="text" className="form-field" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
+            <input type="password" className="form-field" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
             { buttons }
+            { errors ? errors.map(error => (<h3 style={{color: 'red', fontStyle: 'italic'}} key={error}>{error}</h3>)) : null }
           </form>
         </div>
       </div>
