@@ -41,7 +41,7 @@ function LoginForm( {position} ) {
     <>
       <button className="form-field" > Login </button>
       <button className="form-field" > 
-        <NavLink className="form-field" to="/signup"> 
+        <NavLink className="form-field" to="/signup/developer"> 
           Signup 
         </NavLink>
       </button>

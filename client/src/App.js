@@ -17,9 +17,9 @@ function App() {
           <Route exact path="/" element={<Home />} /> 
           <Route path="/developer" element={<Developer />} />
           <Route path="/project_manager" element={<Manager />} />
-          <Route path="/signup" element={<SignupForm />} />
-          <Route path="/d-login" element={<DeveloperLoginForm />} />
-          <Route path="/pm-login" element={<ProjectManagerLoginForm />} />
+          <Route path="/signup/developer" element={<SignupForm />} />
+          <Route path="/login/developer" element={<DeveloperLoginForm />} />
+          <Route path="/login/project_manager" element={<ProjectManagerLoginForm />} />
         </Routes>
       </Router>
     </>
