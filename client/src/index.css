@@ -1,7 +1,7 @@
 /* CreateProjectForm */
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 body{
-      background: #52927b;
+      background-image:url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F5137803.jpg&f=1&nofb=1&ipt=c0ce877d619708834bf83db89e1835c363efbdba6de7a9e158fee941da8823c3&ipo=images);
       object-fit: fill;
 }
 .main {
@@ -12,7 +12,7 @@ body{
 
 }
 
-.home-container {
+/* .home-container {
     min-height: 100vh;
 }
 
@@ -25,7 +25,12 @@ color: rgba(0, 0, 0, 0.877);
 .home-container p{
   text-align: center;
 
-}
+} */
+/* HOMEPAGE */
+/* .homepage text{
+text-align: center;
+color: red;
+} */
 
 
 
@@ -38,6 +43,7 @@ color: rgba(0, 0, 0, 0.877);
   margin: auto;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   padding: 10px;
+  color: #666666;
 }
 
 .create-project-form {
