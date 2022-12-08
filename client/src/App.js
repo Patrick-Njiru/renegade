@@ -6,12 +6,13 @@ import Developer from './components/Developer';
 import SignupForm from './components/SignupForm';
 import ProjectManagerLoginForm from './components/ProjectManagerLoginForm';
 import DeveloperLoginForm from './components/DeveloperLoginForm.js';
-import Navbar from './components/Navbar';
+import NavBar from './components/NavBar'
 
 function App() {
   return (
+    <>
+      <NavBar />
       <Router>
-        {/* <NavBar /> */}
         <Routes>
           <Route exact path="/" element={<Home />} /> 
           <Route path="/developer" element={<Developer />} />
@@ -21,6 +22,7 @@ function App() {
           <Route path="/login/project_manager" element={<ProjectManagerLoginForm />} />
         </Routes>
       </Router>
+    </>
   );
 }
 
