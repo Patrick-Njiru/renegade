@@ -15,16 +15,10 @@ function App() {
 
     if (developer) {
       fetch("/developers/me")
-      .then(r => {
-        r.json().then(dev => setDeveloper(dev))
-        return <Developer developer={developer} />
-      })
+      .then(r => r.json()).then(dev => {setDeveloper(dev)})
     } else if(projectManager) {
       fetch('/project_managers/me')
-      .then(r => {
-        r.json().then(pM => setProjectManager(pM))
-        return <Manager projectManager={projectManager} />
-      })
+      .then(r => {r.json().then(pM => setProjectManager(pM))})
     }
 }, [developer, projectManager])
 
