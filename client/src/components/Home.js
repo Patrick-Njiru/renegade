@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div id='homepage'>
       <h2 className= 'text'>
-        Please select your position in the organization: <br />
+        Welcome to Renegade. <br /> Are you a developer or project manager ? Please select one to continue <br />
       </h2>
       <NavLink
       className="nav-item"
