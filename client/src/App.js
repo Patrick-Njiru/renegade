@@ -6,12 +6,12 @@ import Developer from './components/Developer';
 import SignupForm from './components/SignupForm';
 import ProjectManagerLoginForm from './components/ProjectManagerLoginForm';
 import DeveloperLoginForm from './components/DeveloperLoginForm.js';
-import NavBar from './components/NavBar'
+// import NavBar from './components/NavBar'
 
 function App() {
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
       <Router>
         <Routes>
           <Route exact path="/" element={<Home />} /> 
