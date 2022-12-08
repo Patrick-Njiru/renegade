@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function SignupForm( { getUserProps, setUser }) {
   const [errors, setErrors] = useState(null)
-
   const [formData, setFormData] = useState({ username:"", email:"", profile_pic:"", password:"", password_confirmation:"" })
+
+  const navigate = useNavigate()
 
   function handleChange(e){ setFormData({ ...formData, [e.target.name]: e.target.value }) }
 
@@ -18,6 +20,7 @@ function SignupForm( { getUserProps, setUser }) {
     }).then(r => {
       if (r.ok) {
         r.json().then(user => setUser(user))
+        navigate('/developer')
       } else {
         r.json().then(err => setErrors(err.errors))
       }

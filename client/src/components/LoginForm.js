@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 function LoginForm( {position, setUser} ) {
 
@@ -8,6 +8,7 @@ function LoginForm( {position, setUser} ) {
     username:"",
     password:"",
   })
+  const navigate = useNavigate()
 
   function handleChange(e){
     setFormData({
@@ -28,6 +29,7 @@ function LoginForm( {position, setUser} ) {
     }).then(r => {
       if (r.ok) {
         r.json().then(user => setUser(user))
+        navigate(`/${position}`)
       } else {
         r.json().then(err => setErrors(err.errors))
       }
