@@ -1,7 +1,4 @@
-body{
-    background-image:url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F5137803.jpg&f=1&nofb=1&ipt=c0ce877d619708834bf83db89e1835c363efbdba6de7a9e158fee941da8823c3&ipo=images);
-    object-fit: fill;
-  }
+
 .wrapper {
     height: 100vh;
     /*This part is important for centering*/
