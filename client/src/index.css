@@ -45,14 +45,14 @@ button {
   -ms-flex-pack: center;
   text-align: center;
   border: none;
-  background-color: #ffeba7;
+  background-color: rgb(25, 180, 129);
   color: #102770;
   box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
 }
 .button:active,
 .button:focus {
   background-color: #102770;
-  color: #ffeba7;
+  color: #ffa7d7;
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }
 button:hover{
