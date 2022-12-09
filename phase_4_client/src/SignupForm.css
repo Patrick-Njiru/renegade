@@ -80,15 +80,13 @@ body {
   .title{
     color: aquamarine;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
   }
   .p{
     color: aqua;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 800;
-  }
-
-  .unique {
-    color: aquamarine;
+    text-align: center;
   }
   .button {
     color: aquamarine;
@@ -174,6 +172,4 @@ body {
       opacity: 1;
     }
   }
-
-  
 
