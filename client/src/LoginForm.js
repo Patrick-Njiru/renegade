@@ -67,7 +67,7 @@ function LoginForm( {position, setUser} ) {
           <form className="create-project-form" onSubmit={handleSubmit}>
             <input type="text" className="form-field" placeholder="Username" name="username" value={formData.username} onChange={handleChange} />
             <input type="password" className="form-field" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
-            { buttons }
+            { buttons } <br />
             { errors ? errors.map(error => (<h3 style={{color: 'red', fontStyle: 'italic'}} key={error}>{error}</h3>)) : null }
           </form>
         </div>
