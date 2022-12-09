@@ -12,7 +12,9 @@ class DeveloperSessionsController < ApplicationController
   end
 
   def destroy
-    session.delete(:developer_id)
-    head :no_content, status: :no_content
+    if session[:user_id]
+      session.delete(:developer_id)
+      head :no_content, status: :no_content
+    end 
   end
 end
