@@ -18,6 +18,9 @@ function ProjectManager() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
 
+function handleClick(info) {
+  console.log(info)
+}
 
 
   return (
@@ -25,16 +28,17 @@ function ProjectManager() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-           <Sidebar isSidebar={isSidebar} />
+           <Sidebar isSidebar={isSidebar} handleClick = {handleClick} />
           <main className="content">
             <Topbar setIsSidebar={setIsSidebar}/> 
+            {/* { displayedItems } */}
             <Dashboard />
-            <Routes>
+            {/* <Routes> */}
               {/* <Route path="/" element={<Dashboard />} />
               <Route path="/project_manager_projects" element={<MyProjects />} /> 
               <Route path="/project_manager/mydevelopers" element={<MyDevelopers />} /> 
               <Route path="/project_manager/create-project-form" element={<CreateProjectForm />} />  */}
-            </Routes>
+            {/* </Routes> */}
           </main>
         </div>
       </ThemeProvider>

@@ -10,30 +10,35 @@ import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import { useEffect } from 'react';
 
-const Item = ({ title, to, icon, selected, setSelected }) => {
+var selected = ""
+function setSelected(e) { console.log(e.target.textContent)}
+
+
+const Item = ({ title, icon, state, setState }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  // const [state, setState] = useState("")
+
   return (
-    <MenuItem
-      active={selected === title}
-      style={{
-        color: colors.grey[100],
-      }}
-      onClick={() => setSelected(title)}
-      icon={icon}
-    >
-      <Typography>{title}</Typography>
-      <Link to={to} />
+    <MenuItem  style={{ color: colors.grey[100] }} icon={icon} onClick={(e) => setSelected(e) } >
+     <Typography>{title}</Typography>
     </MenuItem>
   );
 };
 
-const Sidebar = () => {
+const Sidebar = ( { handleClick } ) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("Dashboard");
+
+  useEffect( ()=>{
+     handleClick(selected) 
+  },
+  [selected])
+
+
 
   return (
     <Box
@@ -73,9 +78,7 @@ const Sidebar = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h3" color={colors.grey[100]} fontWeight="semi-bold">
-                  || Renegade ||
-                </Typography>
+                <Typography variant="h3" color={colors.grey[100]} fontWeight="semi-bold"> || Renegade || </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
                 </IconButton>
@@ -104,60 +107,27 @@ const Sidebar = () => {
                 >
                   Peter Griffin
                 </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Project Lead
-                </Typography>
+                <Typography variant="h5" color={colors.greenAccent[500]}> Project Lead </Typography>
               </Box>
             </Box>
           )}
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-            <Item
-              title="Dashboard"
-              to="/project_manager"
-              icon={<HomeOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+            {/* Dashboard icon and clickable text */}
+            <Item title="Dashboard" icon={<HomeOutlinedIcon />} />
 
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Data
-            </Typography>
-            <Item
-              title="My Projects"
-              to="/project_manager_projects"
-              icon={<PeopleOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="My Developers"
-              to="/project_manager_developers"
-              icon={<ContactsOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+            {/* Data title */}
+            <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }} > Data </Typography>
 
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Pages
-            </Typography>
-            <Item
-              title="project_manager_create_new_project"
-              to="/project_manager/create-project-form"
-              icon={<AddOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            
+            {/* My projects and my developers icons and clickable text */}
+            <Item title="My Projects" icon={<PeopleOutlinedIcon />} />
+            <Item title="My Developers" icon={<ContactsOutlinedIcon />} />
+
+            {/* Pages title and create new project clickable text */}
+            <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }} > Pages </Typography>
+            <Item title="Create New Project" icon={<AddOutlinedIcon handleClick = { (e) => console.log(e.target) }/>} />
           </Box>
+
         </Menu>
       </ProSidebar>
     </Box>
