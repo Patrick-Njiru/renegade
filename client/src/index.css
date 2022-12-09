@@ -1,5 +1,45 @@
-/* CreateProjectForm */
+/* @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
+
+html,
+body,
+#root,
+.app,
+.content {
+  height: 100%;
+  width: 100%;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.app {
+  display: flex;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+/* ::-webkit-scrollbar-track {
+  background: #e0e0e0;
+} */
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+  background: #888;
+} */
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
+
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+body{
+      background-image:url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F5137803.jpg&f=1&nofb=1&ipt=c0ce877d619708834bf83db89e1835c363efbdba6de7a9e158fee941da8823c3&ipo=images);
+      object-fit: fill;
+}
 .main {
   display: flex;
   justify-content: center;
