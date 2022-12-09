@@ -2,14 +2,15 @@ import React from 'react'
 import MyProjects from './MyProjects'
 import CreateProjectForm from './CreateProjectForm'
 
-function Manager() {
+function ProjectManager( {projectManager} ) {
+
   return (
     <>
-    <div>Manager</div>
-    <MyProjects />
-    <CreateProjectForm />
+      <div>Manager</div>
+      <MyProjects />
+      <CreateProjectForm />
     </>
   )
 }
 
-export default Manager
+export default ProjectManager
