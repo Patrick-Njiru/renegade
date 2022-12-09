@@ -65,13 +65,28 @@ body {
 .form-container::after {
   animation: opacityChange 5s infinite linear;
 }
+.form-field {
+  margin: 10px 0 10px 0;
+  padding: 15px;
+  font-size: 16px;
+  border: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+}
+input {
+  border-radius: 5px;
+  background: #f2f2f2;
+}
 .title{
   color: aquamarine;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .p{
   color: aqua;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 800;
 }
-.buttons {
+.button {
   color: aquamarine;
    border-radius: 4px;
   /* height: 44px; */
@@ -143,6 +158,9 @@ body {
   opacity: 0;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
+}
+.form-field {
+  font-weight: bold;
 }
 @keyframes opacityChange {
   50% {
