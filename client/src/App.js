@@ -16,7 +16,7 @@ function App() {
       {/* <NavBar /> */}
       <Router>
         <Routes>
-          <Route path="/home" element={<Home home={Home} />} />
+          <Route path="/home" element={<Home home={home} />} />
            <Route path="/developer" element={<Developer developer={developer} />} />
            <Route path="/project_manager" element={<ProjectManager projectManager={projectManager} />} />
            <Route path="/signup/developer" element={<SignupForm setDeveloper={setDeveloper} />} /> 
