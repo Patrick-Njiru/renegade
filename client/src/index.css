@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* CreateProjectForm */
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 body{
@@ -9,75 +10,105 @@ body{
   justify-content: center;
   align-items: center;
   margin-top: 50px
+=======
+/* @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
+>>>>>>> acaec33ead22a4dede603cf62282f21df89a371b
 
+html,
+body,
+#root,
+.app,
+.content {
+  height: 100%;
+  width: 100%;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
-/* .home-container {
-    min-height: 100vh;
+.app {
+  display: flex;
+  position: relative;
 }
 
-.home-container h2{
-text-align: center;
-font-size: 30px;
-color: rgba(0, 0, 0, 0.877);
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-.home-container p{
-  text-align: center;
-
+/* Track */
+/* ::-webkit-scrollbar-track {
+  background: #e0e0e0;
 } */
-/* HOMEPAGE */
-/* .homepage text{
-text-align: center;
-color: red;
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+  background: #888;
+} */
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #555;
 } */
 
 
-
-
-
-.create-project-form-container {
-  width: 360px;
-  background-color: white;
-  border-radius: 10px;
-  margin: auto;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  padding: 10px;
-  color: #666666;
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+body{
+      background-image:url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F5137803.jpg&f=1&nofb=1&ipt=c0ce877d619708834bf83db89e1835c363efbdba6de7a9e158fee941da8823c3&ipo=images);
+      object-fit: fill;
 }
-
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px
+}
 .create-project-form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   padding: 10px;
 }
-
 .create-project-form h2 {
   text-align: center;
   font-family: "Roboto", sans-serif;
   font-size: 25px;
-
 }
-
-.form-field {
-  margin: 10px 0 10px 0;
-  padding: 15px;
-  font-size: 16px;
-  border: 0;
-  font-family: "Roboto", sans-serif;
-}
-
-input {
-  border-radius: 5px;
-  background: #f2f2f2;
-}
-
 button {
-  border-radius: 5px;
-  background: #4caf50;
-  color: white;
-  cursor: pointer;
+  border-radius: 4px;
+  height: 44px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+  padding: 0 30px;
+  letter-spacing: 1px;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  text-align: center;
+  border: none;
+  background-color: rgb(25, 180, 129);
+  color: #102770;
+  box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
+}
+.button:active,
+.button:focus {
+  background-color: #102770;
+  color: #ffa7d7;
+  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+}
+button:hover{
+  background-color: #102770;
+  color: #ffeba7;
+  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }
 
 button:disabled {
