@@ -8,7 +8,7 @@ const Home = () => {
     <div class="wrapper">
     <div id='homepage'>
       <h2 className= 'text'>
-        Welcome to Renegade. <br /> Are you a developer or project manager ? Please select one to continue <br />
+       Are you a developer or <br/ > project manager? 
       </h2>
 
       <div className ="Homelink"> 
