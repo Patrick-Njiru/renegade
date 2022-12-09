@@ -1,41 +1,40 @@
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import React, {useEffect, useState} from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Home from './Home';
+import DeveloperLoginForm from './DeveloperLoginForm.js';
+import ProjectManagerLoginForm from './ProjectManagerLoginForm';
+import SignupForm from './SignupForm'
+import ProjectManager from './ProjectManager'
+import Developer from "./Developer"
 
-// Import components
-import Topbar from "./scenes/constant/Topbar";
-import Sidebar from "./scenes/constant/Sidebar";
-import Dashboard from "./scenes/dashboard";
-import MyProjects from "./scenes/myprojects";
-import MyDevelopers from "./scenes/mydevelopers";
-import CreateProjectForm from "./scenes/create-project-form";
-
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { ColorModeContext, useMode } from "./theme";
 
 function App() {
-  const [theme, colorMode] = useMode();
-  const [isSidebar, setIsSidebar] = useState(true);
+  const [developer, setDeveloper] = useState(null)
+  const [projectManager, setProjectManager] = useState(null)
 
+  useEffect(() => {
+
+    if (developer) {
+      fetch("/developers/me")
+      .then(r => r.json()).then(dev => {setDeveloper(dev)})
+    } else if(projectManager) {
+      fetch('/project_managers/me')
+      .then(r => {r.json().then(pM => setProjectManager(pM))})
+    }
+  }, [developer, projectManager])
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <div className="app">
-           <Sidebar isSidebar={isSidebar} />
-          <main className="content">
-            <Topbar setIsSidebar={setIsSidebar}/> 
-            <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/myprojects" element={<MyProjects />} /> 
-            <Route path="/mydevelopers" element={<MyDevelopers />} /> 
-            <Route path="/create-project-form" element={<CreateProjectForm />} /> 
-            </Routes>
-          </main>
-        </div>
-      </ThemeProvider>
-    </ColorModeContext.Provider>
-  );
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home />} /> 
+           <Route path="/developer" element={<Developer developer={developer} />} />
+           <Route path="/project_manager" element={<ProjectManager projectManager={projectManager} />} />
+           <Route path="/signup/developer" element={<SignupForm setDeveloper={setDeveloper} />} /> 
+           <Route path="/login/developer" element={<DeveloperLoginForm user={developer} setDeveloper={setDeveloper} />} />
+           <Route path="/login/project_manager" element={<ProjectManagerLoginForm user={developer} setProjectManager={setProjectManager} />} />
+         </Routes>
+      </Router>
+  )
 }
 
 export default App;

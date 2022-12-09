@@ -29,7 +29,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   );
 };
 
-const Sidebar = () => {
+const DeveloperSidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -105,7 +105,7 @@ const Sidebar = () => {
                   Peter Griffin
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Project Lead
+                  Developer
                 </Typography>
               </Box>
             </Box>
@@ -114,7 +114,7 @@ const Sidebar = () => {
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Dashboard"
-              to="/project_manager"
+              to="/"
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -129,33 +129,19 @@ const Sidebar = () => {
             </Typography>
             <Item
               title="My Projects"
-              to="/project_manager_projects"
+              to="developer_projects"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="My Developers"
-              to="/project_manager_developers"
+              title="My Managers"
+              to="/developer/mymanagers"
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
 
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Pages
-            </Typography>
-            <Item
-              title="project_manager_create_new_project"
-              to="/project_manager/create-project-form"
-              icon={<AddOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
             
           </Box>
         </Menu>
@@ -164,4 +150,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default DeveloperSidebar;

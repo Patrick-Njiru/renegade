@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from 'react'
 import { Box, IconButton, useTheme } from "@mui/material";
 import {  tokens } from "../../theme";
@@ -12,11 +13,9 @@ import { Typography } from "@mui/material";
 const Topbar = ( ) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [accessText, setAccessText] = useState("Login")
 
   function handleClick(e) {
-    if (accessText === "Login") { setAccessText("Logout") }
-    else { setAccessText("Login")}
+    console.log(e.target)
   }
 
   
@@ -41,8 +40,8 @@ const Topbar = ( ) => {
           <NotificationsOutlinedIcon />
         </IconButton>
         <IconButton onClick={handleClick}>
-        <Typography variant="h5" color={colors.grey[100]} sx={{ m: "0px 20px 0 0" }} > {accessText}</Typography>
-          {accessText === "Logout"? <ExitToAppOutlinedIcon /> : null}
+        <Typography variant="h5" color={colors.grey[100]} sx={{ m: "0px 20px 0 0" }} >Logout</Typography>
+        <ExitToAppOutlinedIcon />
         </IconButton>
       </Box>
     </Box>

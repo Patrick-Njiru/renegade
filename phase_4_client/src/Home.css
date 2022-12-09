@@ -1,0 +1,79 @@
+body{
+    background-image:url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F5137803.jpg&f=1&nofb=1&ipt=c0ce877d619708834bf83db89e1835c363efbdba6de7a9e158fee941da8823c3&ipo=images);
+    object-fit: fill;
+  }
+.wrapper {
+    height: 100vh;
+    /*This part is important for centering*/
+    display: grid;
+    place-items: center;
+  }
+
+.text {
+    text-align: center;
+    color: aqua;
+    font-family: 'Courier New', Courier, monospace;
+    width: 30ch;
+  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: monospace;
+  font-size: 1.5em;
+  padding-left: 20%;
+}
+.Homelink{
+display: flex;
+justify-content: space-evenly;
+width: 50vw;
+text-align: center;
+}
+.container{
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(30, 116, 196, 0.25);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    padding: 38px;
+    filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 22vh;
+    background-repeat: no-repeat;
+    color: aqua;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 1.5em;
+
+}
+.one{
+   background-image: url(https://images.unsplash.com/photo-1549907062-15122f762606?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTF8MTU0NjY2fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60);
+   padding: 24vh 60px 0px;
+   position: relative;
+   bottom: 0;
+   width: 100px;
+}
+ .two{
+    background-image: url(https://images.pexels.com/photos/5668886/pexels-photo-5668886.jpeg?auto=compress&cs=tinysrgb&w=300);
+    position: relative;
+    bottom: 0;
+    padding: 24vh 60px 0px;
+    width: 100px;
+ }
+.nav-item{
+    display: inline-block;
+    padding: 0.5em;
+}
+@keyframes typing {
+    from {
+        width: 0
+    }
+}
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
