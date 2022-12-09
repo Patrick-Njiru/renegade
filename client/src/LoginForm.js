@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from 'react-router-dom'
+import "./index.css"
+import "./LoginForm.css"
 
 function LoginForm( {position, setUser} ) {
 
@@ -44,9 +46,9 @@ function LoginForm( {position, setUser} ) {
   const buttons = (position === 'developer') ? (
     <>
       <button className="form-field" > Login </button>
-        <p>
+        <p className="unique">
           Don't have an account? &emsp;
-          <NavLink style={{textDecoration: 'none'}} to="/signup/developer"> 
+          <NavLink style={{textDecoration: 'none', color: '#ffff'}} to="/signup/developer"> 
           Signup 
         </NavLink>
         </p>
@@ -55,12 +57,13 @@ function LoginForm( {position, setUser} ) {
   (<button className="form-field" > Login </button>)
 
   return (
-    <div className="home-container">
+    
+    <div className="form form-container">
       <div className="main">
         <div className="create-project-form-container">
-          <h2>RENEGADE</h2>
+          <h2 className="title">RENEGADE</h2>
           {/* <img src="" alt="image" /> */}
-          <p>A project management tool to help keep your company's projects organized</p>
+          <p className="p">A project management tool to help keep your company's projects organized</p>
           <form className="create-project-form" onSubmit={handleSubmit}>
             <input type="text" className="form-field" placeholder="Username" name="username" value={formData.username} onChange={handleChange} />
             <input type="password" className="form-field" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
