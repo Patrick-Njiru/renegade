@@ -5,16 +5,21 @@ import  '../Styles/Home.css'
 
 const Home = () => {
   return (
+    <div class="wrapper">
     <div id='homepage'>
       <h2 className= 'text'>
-        Welcome to Renegade. <br /> Are you a developer or project manager ? Please select one to continue <br />
+       Are you a developer or <br/ > project manager? 
       </h2>
+
+      <div className ="Homelink"> 
       <NavLink
-      className="nav-item"
-      to='/login/developer'>I am a Developer</NavLink> <br />
+      className="container one"
+      to='/login/developer'>Developer</NavLink> <br/>
       <NavLink 
-      className="nav-item"
-      to='/login/project_manager'>I am a Project Manager</NavLink>
+      className="container two"
+      to='/login/project_manager'>Project Manager</NavLink>
+      </div>
+    </div>
     </div>
   )
 }
