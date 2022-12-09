@@ -27,7 +27,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} /> 
           <Route path="/developer" element={<Developer developer={developer} />} />
-          <Route path="/project_manager" element={<ProjectManager project_manager={projectManager} />} />
+          <Route path="/project_manager" element={<ProjectManager projectManager={projectManager} />} />
           <Route path="/signup/developer" element={<SignupForm setDeveloper={setDeveloper} />} />
           <Route path="/login/developer" element={<DeveloperLoginForm user={developer} setDeveloper={setDeveloper} />} />
           <Route path="/login/project_manager" element={<ProjectManagerLoginForm user={developer} setProjectManager={setProjectManager} />} />

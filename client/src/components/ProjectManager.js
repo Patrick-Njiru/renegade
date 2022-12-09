@@ -2,13 +2,13 @@ import React from 'react'
 import MyProjects from './MyProjects'
 import CreateProjectForm from './CreateProjectForm'
 
-function ProjectManager() {
+function ProjectManager( {projectManager} ) {
 
   return (
     <>
-    <div>Manager</div>
-    <MyProjects />
-    <CreateProjectForm />
+      <div>Manager</div>
+      <MyProjects />
+      <CreateProjectForm />
     </>
   )
 }
