@@ -2,38 +2,26 @@ import React from 'react'
 import { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-// import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
-const Item = ({ title, to, icon, selected, setSelected }) => {
+const Item = ({ title, icon, onClick  }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
-    <MenuItem
-      active={selected === title}
-      style={{
-        color: colors.grey[100],
-      }}
-      onClick={() => setSelected(title)}
-      icon={icon}
-    >
+    <MenuItem style={{ color: colors.grey[100] }} icon={icon} onClick={onClick} >
       <Typography>{title}</Typography>
-      <Link to={to} />
     </MenuItem>
   );
 };
 
-const DeveloperSidebar = () => {
+const DeveloperSidebar = ( { handleDeveloperSidebarClick} ) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("Dashboard");
 
   return (
     <Box
@@ -73,9 +61,7 @@ const DeveloperSidebar = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h3" color={colors.grey[100]} fontWeight="semi-bold">
-                  || Renegade ||
-                </Typography>
+                <Typography variant="h3" color={colors.grey[100]} fontWeight="semi-bold">|| Renegade || </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
                 </IconButton>
@@ -102,24 +88,17 @@ const DeveloperSidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Peter Griffin
+                  Clark Kent
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Developer
+                  Software Engineer II
                 </Typography>
               </Box>
             </Box>
           )}
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-            <Item
-              title="Dashboard"
-              to="/"
-              icon={<HomeOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-
+            {/* Data title */}
             <Typography
               variant="h6"
               color={colors.grey[300]}
@@ -127,22 +106,10 @@ const DeveloperSidebar = () => {
             >
               Data
             </Typography>
-            <Item
-              title="My Projects"
-              to="developer_projects"
-              icon={<PeopleOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="My Managers"
-              to="/developer/mymanagers"
-              icon={<ContactsOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
 
-            
+            {/* My projects and my managers icons and clickable text */}
+            <Item title="My Projects" icon={<PeopleOutlinedIcon />} onClick={(e) => handleDeveloperSidebarClick(e)}/>
+            <Item title="My Managers" icon={<ContactsOutlinedIcon />} onClick={(e) => handleDeveloperSidebarClick(e)}/>
           </Box>
         </Menu>
       </ProSidebar>

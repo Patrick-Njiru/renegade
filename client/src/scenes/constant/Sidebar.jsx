@@ -9,35 +9,22 @@ import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import { useEffect } from 'react';
 
-var selected = ""
-function setSelected(e) { console.log(e.target.textContent)}
-
-
-const Item = ({ title, icon, state, setState }) => {
+const Item = ({ title, icon, onClick }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  // const [state, setState] = useState("")
 
   return (
-    <MenuItem  style={{ color: colors.grey[100] }} icon={icon} onClick={(e) => setSelected(e) } >
+    <MenuItem  style={{ color: colors.grey[100] }} icon={icon} onClick={onClick}   >
      <Typography>{title}</Typography>
     </MenuItem>
   );
 };
 
-const Sidebar = ( { handleClick } ) => {
+const Sidebar = ( { handleSidebarClick } ) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
-
-  useEffect( ()=>{
-     handleClick(selected) 
-  },
-  [selected])
-
-
 
   return (
     <Box
@@ -58,8 +45,8 @@ const Sidebar = ( { handleClick } ) => {
           color: "#6870fa !important",
         },
       }}
-    >
-      <ProSidebar collapsed={isCollapsed}>
+      >
+      <ProSidebar collapsed={isCollapsed} >
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem
@@ -111,20 +98,20 @@ const Sidebar = ( { handleClick } ) => {
             </Box>
           )}
 
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+          <Box paddingLeft={isCollapsed ? undefined : "10%"} >
             {/* Dashboard icon and clickable text */}
-            <Item title="Dashboard" icon={<HomeOutlinedIcon />} />
+            <Item title="Dashboard" icon={<HomeOutlinedIcon />} onClick={(e) => handleSidebarClick(e)}/>
 
             {/* Data title */}
             <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }} > Data </Typography>
 
             {/* My projects and my developers icons and clickable text */}
-            <Item title="My Projects" icon={<PeopleOutlinedIcon />} />
-            <Item title="My Developers" icon={<ContactsOutlinedIcon />} />
+            <Item title="My Projects" icon={<PeopleOutlinedIcon  />} onClick={(e) => handleSidebarClick(e)}/>
+            <Item title="My Developers" icon={<ContactsOutlinedIcon />}onClick={(e) => handleSidebarClick(e)} />
 
             {/* Pages title and create new project clickable text */}
             <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }} > Pages </Typography>
-            <Item title="Create New Project" icon={<AddOutlinedIcon handleClick = { (e) => console.log(e.target) }/>} />
+            <Item title="Create New Project" icon={<AddOutlinedIcon />}  onClick={(e) => handleSidebarClick(e)}/>
           </Box>
 
         </Menu>

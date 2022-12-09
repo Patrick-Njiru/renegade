@@ -1,23 +1,25 @@
 import React from 'react'
-import { Box, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { tokens } from "../../theme";
-import Header from "../../common/Header";
+import { tokens } from "./theme";
+import Header from "./common/Header";
+import { useTheme } from "@mui/material";
 
-const MyProjects = ( { user_projects }) => {
+const MyManagers = ( { managers }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
   const columns = [
     { field: "id", headerName: "ID" },
     {
-      field: "title",
-      headerName: "Title",
+      field: "name",
+      headerName: "Name",
       flex: 1,
       cellClassName: "name-column--cell",
     },
     {
-      field: "deadline",
-      headerName: "Deadline",
+      field: "project",
+      headerName: "Project",
       flex: 1,
     },
     {
@@ -26,15 +28,18 @@ const MyProjects = ( { user_projects }) => {
       flex: 1,
     },
     {
-      field: "developer",
-      headerName: "Developer",
+      field: "deadline",
+      headerName: "Deadline",
       flex: 1,
     },
   ];
 
   return (
     <Box m="20px">
-      <Header title="MY PROJECTS" subtitle="Managing my projects" />
+      <Header
+        title="MY MANAGERS"
+        subtitle="List of Contacts Information for future reference"
+      />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -62,24 +67,15 @@ const MyProjects = ( { user_projects }) => {
           "& .MuiCheckbox-root": {
             color: `${colors.greenAccent[200]} !important`,
           },
+          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+            color: `${colors.grey[100]} !important`,
+          },
         }}
       >
-        {/* DataGrid receives an array of javascript objects that looks like this:
-        [
-          {
-            id: 1,
-            title: "Jon Snow",
-            description: "jonsnow@gmail.com",
-            deadline: 35,
-            progress: "(665)121-5454",
-            developer: "admin",
-          },
-        ]
-        */}
-        <DataGrid checkboxSelection rows={user_projects} columns={columns} />
+        <DataGrid rows={managers} columns={columns} />
       </Box>
     </Box>
   );
 };
 
-export default MyProjects;
+export default MyManagers;

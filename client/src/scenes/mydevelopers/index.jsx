@@ -1,8 +1,8 @@
 import React from 'react'
 import { Box } from "@mui/material";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataTeam } from "../../data/mockData";
+import { mockDevsPM } from "../../data/mockData";
 import Header from "../../common/Header";
 import { useTheme } from "@mui/material";
 
@@ -13,21 +13,14 @@ const MyDevelopers = () => {
   const columns = [
     { field: "id", headerName: "ID" },
     {
-      field: "title",
-      headerName: "Title",
+      field: "name",
+      headerName: "Name",
       flex: 1,
       cellClassName: "name-column--cell",
     },
     {
-      field: "description",
-      headerName: "Description",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "deadline",
-      headerName: "Deadline",
+      field: "project",
+      headerName: "Project",
       flex: 1,
     },
     {
@@ -36,8 +29,8 @@ const MyDevelopers = () => {
       flex: 1,
     },
     {
-      field: "developer",
-      headerName: "Developer",
+      field: "deadline",
+      headerName: "Deadline",
       flex: 1,
     },
   ];
@@ -80,11 +73,7 @@ const MyDevelopers = () => {
           },
         }}
       >
-        <DataGrid
-          rows={mockDataTeam}
-          columns={columns}
-          components={{ Toolbar: GridToolbar }}
-        />
+        <DataGrid rows={mockDevsPM} columns={columns} />
       </Box>
     </Box>
   );

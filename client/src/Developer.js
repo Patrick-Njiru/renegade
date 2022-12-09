@@ -1,22 +1,40 @@
 import React from 'react'
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 // Import components
 import Topbar from "./scenes/constant/Topbar";
 import DeveloperSidebar from "./scenes/constant/DeveloperSidebar";
-import Dashboard from "./scenes/dashboard";
 import MyProjects from "./scenes/myprojects";
-import MyDevelopers from "./scenes/mydevelopers";
-import CreateProjectForm from "./scenes/create-project-form";
-import './ProjectManager.css'
+import MyManagers from './MyManagers';
 
+// Styling
+import './Developer.css'
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 
-function Developer() {
+// Data
+import { mockProjectsPM, mockDevsPM } from './data/mockData'
+
+function Developer( { developer }) {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
+  const [view, setView] = useState("")
+  const [displayedItems, setDisplayedItems] = useState(<MyProjects user_projects={mockProjectsPM}/>)
+
+
+
+  // This receives information from the Sidebar on what sidebar item has been clicked and stores it in state
+  function handleDeveloperSidebarClick(e) {
+    let clickedItem = e.target.textContent
+    setView(clickedItem)
+  }
+
+ // Conditional rendering based on what sidebar component has been clicked
+  useEffect(()=>{
+    if (view === "My Projects") { setDisplayedItems( <MyProjects user_projects={mockProjectsPM} /> ) }
+    else if (view === "My Managers") { setDisplayedItems( <MyManagers managers = {mockDevsPM} /> ) }
+   
+  }, [view])
 
 
   return (
@@ -24,17 +42,11 @@ function Developer() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-           <DeveloperSidebar isSidebar={isSidebar} />
+           <DeveloperSidebar isSidebar={isSidebar} handleDeveloperSidebarClick={ handleDeveloperSidebarClick }/>
           <main className="content">
             <Topbar setIsSidebar={setIsSidebar}/> 
-            <Dashboard />
-            {/* <Routes>
-            <Route path="/" element={<Dashboard />} /> */}
-            {/* <Route path="/developer_projects" element={<MyProjects />} /> 
-            <Route path="/developer/mydevelopers" element={<MyDevelopers />} /> 
-            <Route path="/developer/create-project-form" element={<CreateProjectForm />} />  */}
-            {/* </Routes> */}
-          </main>
+            { displayedItems }
+            </main>
         </div>
       </ThemeProvider>
     </ColorModeContext.Provider>
