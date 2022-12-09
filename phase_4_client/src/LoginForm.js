@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from 'react-router-dom'
-import "../Styles/LoginForm.css"
+import "./LoginForm.css"
+
 function LoginForm( {position, setUser} ) {
 
   const [errors, setErrors] = useState(null)
