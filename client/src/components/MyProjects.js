@@ -3,8 +3,7 @@ import ProjectCard from './ProjectCard'
 
 function MyProjects( ) {
   return (
-    <div className="myprojects-main">
-        
+    <div style={{width: '70vw'}} className="myprojects-main">
       <div className="myprojects-container">
         <h2>My Projects</h2>
           <ProjectCard />
