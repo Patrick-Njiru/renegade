@@ -2,7 +2,8 @@ import React from 'react'
 import MyProjects from './MyProjects'
 import CreateProjectForm from './CreateProjectForm'
 
-function Manager() {
+function ProjectManager() {
+
   return (
     <>
     <div>Manager</div>
@@ -12,4 +13,4 @@ function Manager() {
   )
 }
 
-export default Manager
+export default ProjectManager
