@@ -1,8 +1,8 @@
 import React from 'react'
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { tokens } from "./theme";
-import Header from "./common/Header";
+import { tokens } from "../theme";
+import Header from "../common/Header";
 import { useTheme } from "@mui/material";
 
 const MyManagers = ( { managers }) => {

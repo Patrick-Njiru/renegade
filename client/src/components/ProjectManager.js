@@ -2,18 +2,18 @@ import React from 'react'
 import { useState, useEffect } from "react";
 
 // Import components
-import Topbar from "./scenes/constant/Topbar";
-import Sidebar from "./scenes/constant/Sidebar";
-import Dashboard from "./scenes/dashboard";
-import MyProjects from "./scenes/myprojects";
-import MyDevelopers from "./scenes/mydevelopers";
-import CreateProjectForm from "./scenes/create-project-form";
+import Topbar from "../scenes/constant/Topbar";
+import Sidebar from "../scenes/constant/Sidebar";
+import Dashboard from "../scenes/dashboard";
+import MyProjects from "../scenes/myprojects";
+import MyDevelopers from "../scenes/mydevelopers";
+import CreateProjectForm from "../scenes/create-project-form";
 
 
 // Styling
-import './ProjectManager.css'
+import '../styles/ProjectManager.css'
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { ColorModeContext, useMode } from "./theme";
+import { ColorModeContext, useMode } from "../theme";
 
 function ProjectManager( {currentUser}) {
 

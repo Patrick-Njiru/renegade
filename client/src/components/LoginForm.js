@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from 'react-router-dom'
-import "./index.css"
-import "./LoginForm.css"
+import "../styles/index.css"
+import "../styles/LoginForm.css"
 
 function LoginForm( {position} ) {
 
