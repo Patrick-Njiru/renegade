@@ -1,7 +1,8 @@
 class ProjectManagersController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+
     def index 
-        Projectmanagers = Project_Manger.all
-        render json: Projectmanagers
+        render json: ProjectManager.all
     end
 
     def show

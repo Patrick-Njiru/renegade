@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from 'react-router-dom'
-import "./index.css"
-import "./LoginForm.css"
+import "../styles/index.css"
+import "../styles/LoginForm.css"
 
 function LoginForm( {position} ) {
 
@@ -10,6 +10,7 @@ function LoginForm( {position} ) {
     username:"",
     password:"",
   })
+  const navigate = useNavigate()
 
   function handleChange(e){
     setFormData({
@@ -18,8 +19,6 @@ function LoginForm( {position} ) {
     })
   }
 
-  // When form is submitted, create a new project with the 
-  // details in the formData. 
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -45,8 +44,6 @@ function LoginForm( {position} ) {
         r.json().then(err => setErrors(err.errors))
       }
     })
-    .then(res => res.json())
-    .then(console.log)
 
     setFormData({
       username:"",

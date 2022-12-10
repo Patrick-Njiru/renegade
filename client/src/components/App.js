@@ -19,7 +19,6 @@ function App() {
   }, [])
 
   return (
-    <>
       <Router>
         <Routes>
           <Route exact path="/" element={<Home />} /> 
@@ -30,8 +29,7 @@ function App() {
           <Route path="/login/project_manager" element={<ProjectManagerLoginForm />} />
         </Routes>
       </Router>
-    </>
-  );
+  )
 }
 
 export default App;
