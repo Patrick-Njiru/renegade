@@ -1,15 +1,49 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Box, Button, TextField } from "@mui/material";
-import { Formik } from "formik";
+import { Formik, Field } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../common/Header";
 
-const CreateProjectForm = () => {
+const CreateProjectForm = ({currentUser}) => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
+  const [error, setErrors] = useState([])
+  const [developers, setDevelopers] = useState([])
+
+  useEffect(() => {
+    fetch('/developers').then(r => r.json()).then(setDevelopers)
+  }, [])
+    
+  
 
   const handleFormSubmit = (values) => {
-    console.log(values);
+    fetch('/projects', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values),
+    }).then(r => {
+      if (r.ok) {
+        r.json().then(project => currentUser.projects << project)
+    } else {
+      r.json().then(err => setErrors(err.errors))
+    }
+  })
+}
+  const checkoutSchema = yup.object().shape({
+    title: yup.string().required("required"),
+    description: yup.string().required("required"),
+    deadline: yup.string().required("required"),
+    progress: yup.string().required("required"),
+    developer_id: yup.string().required("required"),
+  });
+
+  const initialValues = {
+    project_manager_id: currentUser.id,
+    title: "",
+    description: "",
+    deadline: "",
+    progress: "",
+    developer_id: ""
   };
 
   return (
@@ -67,7 +101,7 @@ const CreateProjectForm = () => {
               <TextField
                 fullWidth
                 variant="filled"
-                type="text"
+                type="date"
                 label="Deadline"
                 onBlur={handleBlur}
                 onChange={handleChange}
@@ -90,47 +124,35 @@ const CreateProjectForm = () => {
                 helperText={touched.progress && errors.progress}
                 sx={{ gridColumn: "span 4" }}
               />
-              <TextField
+              <Field
                 fullWidth
                 variant="filled"
-                type="text"
+                as = 'select'
                 label="Developer"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.developer}
-                name="developer"
-                error={!!touched.developer && !!errors.developer}
-                helperText={touched.developer && errors.developer}
+                value={values.developer_id}
+                name='developer_id'
+                // error={!!touched.developer && !!errors.developer}
+                // helperText={touched.developer && errors.developer}
                 sx={{ gridColumn: "span 4" }}
-              />
+              >id
+                {developers.map(dev => (<option  key={dev.id} value={`${dev.id}`}>{dev.username}</option>))}
+                {/* <option value="react">React</option>
+                <option value="angular">Angular</option>   */}
+              </Field>
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
                 Create New Project
               </Button>
             </Box>
+            {error.map(error => (<h3 style={{color: 'red', fontStyle: 'italic'}} key={error}>{error}</h3>))}
           </form>
         )}
       </Formik>
     </Box>
   );
-};
-
-
-const checkoutSchema = yup.object().shape({
-  title: yup.string().required("required"),
-  description: yup.string().required("required"),
-  deadline: yup.string().required("required"),
-  progress: yup.string().required("required"),
-  developer: yup.string().required("required"),
-});
-
-const initialValues = {
-  title: "",
-  description: "",
-  deadline: "",
-  progress: "",
-  developer: ""
 };
 
 export default CreateProjectForm;

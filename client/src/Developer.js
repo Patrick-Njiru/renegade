@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 // Import components
 import Topbar from "./scenes/constant/Topbar";
@@ -11,7 +10,6 @@ import MyManagers from './MyManagers';
 import './Developer.css'
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
-import { mockProjectsPM, mockDevsPM } from './data/mockData'
 
 function Developer( {currentUser}) {
 
@@ -19,7 +17,7 @@ function Developer( {currentUser}) {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
   const [view, setView] = useState("")
-  const [displayedItems, setDisplayedItems] = useState(<MyProjects user_projects={mockProjectsPM}/>)
+  const [displayedItems, setDisplayedItems] = useState(<MyProjects position='developers' />)
 
 
 
@@ -31,10 +29,10 @@ function Developer( {currentUser}) {
 
  // Conditional rendering based on what sidebar component has been clicked
   useEffect(()=>{
-    if (view === "My Projects") { setDisplayedItems( <MyProjects user_projects={mockProjectsPM} /> ) }
-    else if (view === "My Managers") { setDisplayedItems( <MyManagers managers = {mockDevsPM} /> ) }
+    if (view === "My Projects") { setDisplayedItems( <MyProjects position='developers' /> ) }
+    else if (view === "My Managers") { setDisplayedItems( <MyManagers managers = {currentUser.project_managers} /> ) }
    
-  }, [view])
+  }, [view, currentUser])
 
 
   return (

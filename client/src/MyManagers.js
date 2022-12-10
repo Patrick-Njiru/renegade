@@ -10,28 +10,28 @@ const MyManagers = ( { managers }) => {
   const colors = tokens(theme.palette.mode);
 
   const columns = [
-    { field: "id", headerName: "ID" },
+    { field: "id", headerName: "Project Manager" },
     {
-      field: "name",
+      field: "username",
       headerName: "Name",
       flex: 1,
       cellClassName: "name-column--cell",
     },
     {
-      field: "project",
-      headerName: "Project",
+      field: "email",
+      headerName: "Email",
       flex: 1,
     },
-    {
-      field: "progress",
-      headerName: "Progress",
-      flex: 1,
-    },
-    {
-      field: "deadline",
-      headerName: "Deadline",
-      flex: 1,
-    },
+    // {
+    //   field: "progress",
+    //   headerName: "Progress",
+    //   flex: 1,
+    // },
+    // {
+    //   field: "deadline",
+    //   headerName: "Deadline",
+    //   flex: 1,
+    // },
   ];
 
   return (

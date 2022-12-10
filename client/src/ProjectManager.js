@@ -14,10 +14,8 @@ import CreateProjectForm from "./scenes/create-project-form";
 import './ProjectManager.css'
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
-import { mockProjectsPM, mockDevsPM } from './data/mockData';
 
 function ProjectManager( {currentUser}) {
-// Data
 
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
@@ -33,10 +31,10 @@ function ProjectManager( {currentUser}) {
   // Conditional rendering based on what sidebar component has been clicked
   useEffect(()=>{
     if (view === "Dashboard") { setDisplayedItems( <Dashboard /> ) }
-    else if (view === "My Projects") { setDisplayedItems( <MyProjects user_projects={mockProjectsPM}/> ) }
-    else if (view === "My Developers") { setDisplayedItems( <MyDevelopers developers={mockDevsPM} /> ) }
-    else if (view === "Create New Project") { setDisplayedItems( <CreateProjectForm />) }
-  }, [view])
+    else if (view === "My Projects") { setDisplayedItems( <MyProjects position='project_managers' /> ) }
+    else if (view === "My Developers") { setDisplayedItems( <MyDevelopers developers={currentUser.developers} /> ) }
+    else if (view === "Create New Project") { setDisplayedItems( <CreateProjectForm currentUser= {currentUser}/>) }
+  }, [view, currentUser])
 
 
   

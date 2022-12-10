@@ -1,19 +1,33 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import Header from "../../common/Header";
 
-const MyProjects = ( { user_projects }) => {
+const MyProjects = ( { position }) => {
+
+  const [projects, setProjects] = useState([])
+
+  useEffect(() => {
+    fetch(`/${position}/me`).then(res => res.json())
+    .then(user => setProjects(user.projects))
+    .then(console.log(projects))
+
+  }, [projects, position])
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "ID" },
+    { field: "id", headerName: "Project" },
     {
       field: "title",
       headerName: "Title",
       flex: 1,
       cellClassName: "name-column--cell",
+    },
+    {
+      field: "description",
+      headerName: "Description",
+      flex: 1,
     },
     {
       field: "deadline",
@@ -76,7 +90,7 @@ const MyProjects = ( { user_projects }) => {
           },
         ]
         */}
-        <DataGrid checkboxSelection rows={user_projects} columns={columns} />
+        <DataGrid checkboxSelection rows={projects} columns={columns} />
       </Box>
     </Box>
   );
