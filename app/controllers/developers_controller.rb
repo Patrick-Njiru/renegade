@@ -1,14 +1,14 @@
 class DevelopersController < ApplicationController
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     def index
-        render json: Developer.all
+        developers = Developer.all
+        render json:developers
     end
 
     def show
         developer = Developer.find(session[:user_id])
-        render json: developer
+        render json:developers
     end
 
     def create
@@ -19,6 +19,7 @@ class DevelopersController < ApplicationController
     def render_not_found_response
     render json: {error: "User not found!"}, status: :not_found
     end
+
     private
 
     def developer_params

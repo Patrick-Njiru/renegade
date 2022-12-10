@@ -10,7 +10,6 @@ function LoginForm( {position} ) {
     username:"",
     password:"",
   })
-  const navigate = useNavigate()
 
   function handleChange(e){
     setFormData({
@@ -19,6 +18,8 @@ function LoginForm( {position} ) {
     })
   }
 
+  // When form is submitted, create a new project with the 
+  // details in the formData. 
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -44,6 +45,8 @@ function LoginForm( {position} ) {
         r.json().then(err => setErrors(err.errors))
       }
     })
+    .then(res => res.json())
+    .then(console.log)
 
     setFormData({
       username:"",

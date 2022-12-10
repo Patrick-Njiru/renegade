@@ -3,4 +3,5 @@ class ProjectSerializer < ActiveModel::Serializer
   def developer
     self.object.developer.username
   end
+
 end
