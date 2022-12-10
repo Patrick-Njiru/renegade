@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataTeam } from "../../data/mockData";
+import { mockProjectsPM } from "../../data/mockData";
 
 import Header from "../../common/Header";
 
@@ -16,13 +16,6 @@ const Dashboard = () => {
       headerName: "Title",
       flex: 1,
       cellClassName: "name-column--cell",
-    },
-    {
-      field: "description",
-      headerName: "Description",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
     },
     {
       field: "deadline",
@@ -73,7 +66,7 @@ const Dashboard = () => {
               },
             }}
           >
-            <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+            <DataGrid  rows={mockProjectsPM} columns={columns} />
           </Box>
       </Box>
   );

@@ -35,7 +35,7 @@ const CreateProjectForm = () => {
               gap="30px"
               gridTemplateColumns="repeat(4, minmax(0, 1fr))"
               sx={{
-                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" }, borderRadius: "10px"
               }}
             >
               <TextField
@@ -49,7 +49,7 @@ const CreateProjectForm = () => {
                 name="title"
                 error={!!touched.title && !!errors.title}
                 helperText={touched.title && errors.title}
-                sx={{ gridColumn: "span 4" }}
+                sx={{ gridColumn: "span 4"}}
               />
               <TextField
                 fullWidth
