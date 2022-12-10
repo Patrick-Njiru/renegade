@@ -81,7 +81,49 @@ const renderDeleteButton = (params) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const columns = [
+  let columns = []
+
+  position === 'developers' ? 
+  columns = [
+    { field: "id", headerName: "Project" },
+    {
+      field: "title",
+      headerName: "Title",
+      flex: 1,
+      cellClassName: "name-column--cell",
+    },
+    {
+      field: "description",
+      headerName: "Description",
+      flex: 1,
+    },
+    {
+      field: "deadline",
+      headerName: "Deadline",
+      flex: 1,
+    },
+    {
+      field: "progress",
+      headerName: "Progress",
+      flex: 1,
+      editable: true
+    },
+    {
+      field: "developer",
+      headerName: "Developer",
+      flex: 1,
+    },
+    {
+        field: 'update',
+        headerName: 'Update',
+        width: 150,
+        renderCell: renderUpdateButton,
+        disableClickEventBubbling: true,
+    }
+   
+  ] :
+  
+  columns = [
     { field: "id", headerName: "Project" },
     {
       field: "title",
@@ -128,96 +170,7 @@ const renderDeleteButton = (params) => {
       renderCell: renderDeleteButton,
       disableClickEventBubbling: true,
   }
-  ];
-
-  // position === 'developers' ? 
-  // columns = [
-  //   { field: "id", headerName: "Project" },
-  //   {
-  //     field: "title",
-  //     headerName: "Title",
-  //     flex: 1,
-  //     cellClassName: "name-column--cell",
-  //   },
-  //   {
-  //     field: "description",
-  //     headerName: "Description",
-  //     flex: 1,
-  //   },
-  //   {
-  //     field: "deadline",
-  //     headerName: "Deadline",
-  //     flex: 1,
-  //   },
-  //   {
-  //     field: "progress",
-  //     headerName: "Progress",
-  //     flex: 1,
-  //     editable: true
-  //   },
-  //   {
-  //     field: "developer",
-  //     headerName: "Developer",
-  //     flex: 1,
-  //   },
-  //   {
-  //       field: 'update',
-  //       headerName: 'Update',
-  //       width: 150,
-  //       renderCell: renderUpdateButton,
-  //       disableClickEventBubbling: true,
-  //   }
-   
-  // ] :
-  
-  // columns = [
-  //   { field: "id", headerName: "Project" },
-  //   {
-  //     field: "title",
-  //     headerName: "Title",
-  //     flex: 1,
-  //     cellClassName: "name-column--cell",
-  //     editable: true
-  //   },
-  //   {
-  //     field: "description",
-  //     headerName: "Description",
-  //     flex: 1,
-  //     editable: true
-  //   },
-  //   {
-  //     field: "deadline",
-  //     headerName: "Deadline",
-  //     flex: 1,
-  //     editable: true
-  //   },
-  //   {
-  //     field: "progress",
-  //     headerName: "Progress",
-  //     flex: 1,
-  //     editable: true
-  //   },
-  //   {
-  //     field: "developer",
-  //     headerName: "Developer",
-  //     flex: 1,
-  //     editable: true
-  //   },
-  //   {
-  //       field: 'update',
-  //       headerName: 'Update',
-  //       width: 150,
-  //       renderCell: renderUpdateButton,
-  //       disableClickEventBubbling: true,
-  //   },
-  //   {
-  //     field: 'delete',
-  //     headerName: 'Delete',
-  //     width: 150,
-  //     renderCell: renderDeleteButton,
-  //     disableClickEventBubbling: true,
-  // }
-  // ]
+  ]
 
   return (
     <Box m="20px">
