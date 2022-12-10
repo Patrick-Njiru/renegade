@@ -5,7 +5,7 @@ puts "🌱 Seeding..."
     username: Faker::Name.unique.name, 
     email: Faker::Internet.unique.email(domain: 'renegades.com'), 
     profile_pic: Faker::Avatar.unique.image,
-    password: 'ProjectManagerx'
+    password: 'ProjectManagerX'
     )
 }
 
