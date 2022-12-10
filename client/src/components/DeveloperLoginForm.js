@@ -2,8 +2,8 @@ import React from "react";
 import LoginForm from "./LoginForm";
 
 
-function DeveloperLoginForm() {
-  return (<LoginForm position= "developer" />)
+function DeveloperLoginForm( { setDeveloper}) {
+  return (<LoginForm position= "developer" setUser={setDeveloper} />)
 }
 
 export default DeveloperLoginForm;
