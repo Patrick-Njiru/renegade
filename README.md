@@ -52,16 +52,21 @@ bundle install
 Incase of any issues experienced in installig dependancies.
 
  contact the involved developers:
+ 
  **UI(Frontend):**
  
-Kevin Irungu
-Stephen Njuguna
-Ronald Kubasu
+Kevin Irungu,
+
+Stephen Njuguna,
+
+Ronald Kubasu,
 
 **Backend**
 
-Allan Ngugi
+Allan Ngugi,
+
 Patrick Njiru
+
  (sensitive data).
 
 ### Initialize the database
