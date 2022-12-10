@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 // Import components
-import Topbar from "./scenes/constant/Topbar";
-import DeveloperSidebar from "./scenes/constant/DeveloperSidebar";
-import MyProjects from "./scenes/myprojects";
+import Topbar from "../scenes/constant/Topbar";
+import DeveloperSidebar from "../scenes/constant/DeveloperSidebar";
+import MyProjects from "../scenes/myprojects";
 import MyManagers from './MyManagers';
 
 // Styling
-import './Developer.css'
+import '../styles/Developer.css'
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { ColorModeContext, useMode } from "./theme";
+import { ColorModeContext, useMode } from "../theme";
 
 function Developer( {currentUser}) {
 

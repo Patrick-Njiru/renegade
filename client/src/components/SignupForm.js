@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./SignupForm.css"
+import "../styles/SignupForm.css"
 
 function SignupForm( { getUserProps, setUser }) {
   const [errors, setErrors] = useState(null)

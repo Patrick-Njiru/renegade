@@ -10,23 +10,27 @@ const MyProjects = ( { position }) => {
 
   const [projects, setProjects] = useState([])
   const [errors, setErrors] = useState([])
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
-  const handleUpdate = (data) => {
+  useEffect(() => {
+    fetch(`/${position}/me`).then(res => res.json())
+    .then(user => setProjects(user.projects))
+  }, [projects, position])
+
+  const handleUpdate = (project) => {
     
-    fetch('/projects/'+data.id , {
+    fetch('/projects/'+ project.id , {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      body: JSON.stringify(project)
     })
     .then(r => {
-      if (r.ok) {
-        // alert("Updated successfully")
-        // fetch(`/${position}/me`).then(res => res.json())
-        // .then(user => setProjects(user.projects))        
-      } else {
-        alert('errors')
+      if (r.ok) alert("Updated successfully")
+      else {
+        alert('Error updating data! Please try again')
         r.json().then(err => setErrors(err.errors))
-        alert(errors)
+        console.log(errors)
       }
     })
   }
@@ -70,22 +74,14 @@ const renderDeleteButton = (params) => {
             Delete
           </Button>
       </strong>
-  )
-}
-
-  useEffect(() => {
-    fetch(`/${position}/me`).then(res => res.json())
-    .then(user => setProjects(user.projects))
-  }, [projects, position])
-
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
+      )
+  }
 
   let columns = []
 
   position === 'developers' ? 
   columns = [
-    { field: "id", headerName: "Project" },
+    { field: "id", headerName: "ID" },
     {
       field: "title",
       headerName: "Title",
@@ -124,7 +120,10 @@ const renderDeleteButton = (params) => {
   ] :
   
   columns = [
-    { field: "id", headerName: "Project" },
+    { 
+      field: "id", 
+      headerName: "Project" 
+    },
     {
       field: "title",
       headerName: "Title",
@@ -169,7 +168,7 @@ const renderDeleteButton = (params) => {
       width: 150,
       renderCell: renderDeleteButton,
       disableClickEventBubbling: true,
-  }
+    }
   ]
 
   return (
@@ -204,19 +203,7 @@ const renderDeleteButton = (params) => {
           },
         }}
       >
-        {/* DataGrid receives an array of javascript objects that looks like this:
-        [
-          {
-            id: 1,
-            title: "Jon Snow",
-            description: "jonsnow@gmail.com",
-            deadline: 35,
-            progress: "(665)121-5454",
-            developer: "admin",
-          },
-        ]
-        */}
-        <DataGrid rows={projects} columns={columns} />
+      <DataGrid rows={projects} columns={columns} />
       </Box>
     </Box>
   );
