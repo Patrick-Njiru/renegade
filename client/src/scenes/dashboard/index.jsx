@@ -1,12 +1,18 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataTeam } from "../../data/mockData";
 
 import Header from "../../common/Header";
 
 const Dashboard = () => {
+  const [projects, setProjects] = useState([])
+
+  useEffect(()=>{
+    fetch('/projects')
+    .then(res => res.json()).then(setProjects)
+  },[])
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
@@ -20,9 +26,7 @@ const Dashboard = () => {
     {
       field: "description",
       headerName: "Description",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
+      flex: 1,
     },
     {
       field: "deadline",
@@ -73,7 +77,7 @@ const Dashboard = () => {
               },
             }}
           >
-            <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+            <DataGrid  rows={projects} columns={columns} />
           </Box>
       </Box>
   );

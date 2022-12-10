@@ -1,6 +1,5 @@
 import React from 'react'
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 // Import components
 import Topbar from "./scenes/constant/Topbar";
@@ -9,18 +8,36 @@ import Dashboard from "./scenes/dashboard";
 import MyProjects from "./scenes/myprojects";
 import MyDevelopers from "./scenes/mydevelopers";
 import CreateProjectForm from "./scenes/create-project-form";
-import './ProjectManager.css'
 
+
+// Styling
+import './ProjectManager.css'
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 
-function ProjectManager() {
+function ProjectManager( {currentUser}) {
+
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
+  const [view, setView] = useState("")
+  const [displayedItems, setDisplayedItems] = useState(<Dashboard />)
 
-function handleClick(info) {
-  console.log(info)
-}
+  // This receives information from the Sidebar on what sidebar item has been clicked and stores it in state
+  function handleSidebarClick(e) {
+    let clickedItem = e.target.textContent
+    setView(clickedItem)
+  }
+
+  // Conditional rendering based on what sidebar component has been clicked
+  useEffect(()=>{
+    if (view === "Dashboard") { setDisplayedItems( <Dashboard /> ) }
+    else if (view === "My Projects") { setDisplayedItems( <MyProjects position='project_managers' /> ) }
+    else if (view === "My Developers") { setDisplayedItems( <MyDevelopers developers={currentUser.developers} /> ) }
+    else if (view === "Create New Project") { setDisplayedItems( <CreateProjectForm currentUser= {currentUser}/>) }
+  }, [view, currentUser])
+
+
+  
 
 
   return (
@@ -28,17 +45,10 @@ function handleClick(info) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-           <Sidebar isSidebar={isSidebar} handleClick = {handleClick} />
+           <Sidebar currentUser={currentUser} isSidebar={isSidebar} handleSidebarClick= {handleSidebarClick} />
           <main className="content">
-            <Topbar setIsSidebar={setIsSidebar}/> 
-            {/* { displayedItems } */}
-            <Dashboard />
-            {/* <Routes> */}
-              {/* <Route path="/" element={<Dashboard />} />
-              <Route path="/project_manager_projects" element={<MyProjects />} /> 
-              <Route path="/project_manager/mydevelopers" element={<MyDevelopers />} /> 
-              <Route path="/project_manager/create-project-form" element={<CreateProjectForm />} />  */}
-            {/* </Routes> */}
+            <Topbar position='project_manager' setIsSidebar={setIsSidebar}/> 
+            { displayedItems }
           </main>
         </div>
       </ThemeProvider>

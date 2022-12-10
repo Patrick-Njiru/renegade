@@ -1,44 +1,43 @@
 import React from 'react'
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { tokens } from "../../theme";
-import { mockDevsPM } from "../../data/mockData";
-import Header from "../../common/Header";
+import { tokens } from "./theme";
+import Header from "./common/Header";
 import { useTheme } from "@mui/material";
 
-const MyDevelopers = () => {
+const MyManagers = ( { managers }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   const columns = [
-    { field: "id", headerName: "ID" },
+    { field: "id", headerName: "Project Manager" },
     {
-      field: "name",
+      field: "username",
       headerName: "Name",
       flex: 1,
       cellClassName: "name-column--cell",
     },
     {
-      field: "project",
-      headerName: "Project",
+      field: "email",
+      headerName: "Email",
       flex: 1,
     },
-    {
-      field: "progress",
-      headerName: "Progress",
-      flex: 1,
-    },
-    {
-      field: "deadline",
-      headerName: "Deadline",
-      flex: 1,
-    },
+    // {
+    //   field: "progress",
+    //   headerName: "Progress",
+    //   flex: 1,
+    // },
+    // {
+    //   field: "deadline",
+    //   headerName: "Deadline",
+    //   flex: 1,
+    // },
   ];
 
   return (
     <Box m="20px">
       <Header
-        title="MY DEVELOPERS"
+        title="MY MANAGERS"
         subtitle="List of Contacts Information for future reference"
       />
       <Box
@@ -73,10 +72,10 @@ const MyDevelopers = () => {
           },
         }}
       >
-        <DataGrid rows={mockDevsPM} columns={columns} />
+        <DataGrid rows={managers} columns={columns} />
       </Box>
     </Box>
   );
 };
 
-export default MyDevelopers;
+export default MyManagers;

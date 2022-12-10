@@ -1,15 +1,91 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import Button from '@mui/material/Button';
+
 import { tokens } from "../../theme";
-import { mockDataTeam } from "../../data/mockData";
 import Header from "../../common/Header";
 
-const MyProjects = () => {
+const MyProjects = ( { position }) => {
+
+  const [projects, setProjects] = useState([])
+  const [errors, setErrors] = useState([])
+
+  const handleUpdate = (data) => {
+    
+    fetch('/projects/'+data.id , {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(r => {
+      if (r.ok) {
+        // alert("Updated successfully")
+        // fetch(`/${position}/me`).then(res => res.json())
+        // .then(user => setProjects(user.projects))        
+      } else {
+        alert('errors')
+        r.json().then(err => setErrors(err.errors))
+        alert(errors)
+      }
+    })
+  }
+
+  const handleDelete = (id) => {
+    fetch('/projects/'+id, {
+      method: 'DELETE',
+      head: 'no-content'
+    }).then(res => console.log(res.json()))
+  }
+
+  const renderUpdateButton = (params) => {
+    return (
+        <strong>
+            <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                onClick={(e) => {
+                    handleUpdate(params.row)
+                }}
+            >
+              Update
+            </Button>
+        </strong>
+    )
+}
+
+const renderDeleteButton = (params) => {
+  return (
+      <strong>
+          <Button
+              variant="contained"
+              color="primary"
+              size="small"
+              style={{ marginLeft: 16 }}
+              onClick={(e) => {
+                  handleDelete(params.row.id)
+              }}
+          >
+            Delete
+          </Button>
+      </strong>
+  )
+}
+
+  useEffect(() => {
+    fetch(`/${position}/me`).then(res => res.json())
+    .then(user => setProjects(user.projects))
+  }, [projects, position])
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const columns = [
-    { field: "id", headerName: "ID" },
+
+  let columns = []
+
+  position === 'developers' ? 
+  columns = [
+    { field: "id", headerName: "Project" },
     {
       field: "title",
       headerName: "Title",
@@ -19,9 +95,7 @@ const MyProjects = () => {
     {
       field: "description",
       headerName: "Description",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
+      flex: 1,
     },
     {
       field: "deadline",
@@ -32,13 +106,71 @@ const MyProjects = () => {
       field: "progress",
       headerName: "Progress",
       flex: 1,
+      editable: true
     },
     {
       field: "developer",
       headerName: "Developer",
       flex: 1,
     },
-  ];
+    {
+        field: 'update',
+        headerName: 'Update',
+        width: 150,
+        renderCell: renderUpdateButton,
+        disableClickEventBubbling: true,
+    }
+   
+  ] :
+  
+  columns = [
+    { field: "id", headerName: "Project" },
+    {
+      field: "title",
+      headerName: "Title",
+      flex: 1,
+      cellClassName: "name-column--cell",
+      editable: true
+    },
+    {
+      field: "description",
+      headerName: "Description",
+      flex: 1,
+      editable: true
+    },
+    {
+      field: "deadline",
+      headerName: "Deadline",
+      flex: 1,
+      editable: true
+    },
+    {
+      field: "progress",
+      headerName: "Progress",
+      flex: 1,
+      editable: true
+    },
+    {
+      field: "developer",
+      headerName: "Developer",
+      flex: 1,
+      editable: true
+    },
+    {
+        field: 'update',
+        headerName: 'Update',
+        width: 150,
+        renderCell: renderUpdateButton,
+        disableClickEventBubbling: true,
+    },
+    {
+      field: 'delete',
+      headerName: 'Delete',
+      width: 150,
+      renderCell: renderDeleteButton,
+      disableClickEventBubbling: true,
+  }
+  ]
 
   return (
     <Box m="20px">
@@ -72,7 +204,19 @@ const MyProjects = () => {
           },
         }}
       >
-        <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+        {/* DataGrid receives an array of javascript objects that looks like this:
+        [
+          {
+            id: 1,
+            title: "Jon Snow",
+            description: "jonsnow@gmail.com",
+            deadline: 35,
+            progress: "(665)121-5454",
+            developer: "admin",
+          },
+        ]
+        */}
+        <DataGrid rows={projects} columns={columns} />
       </Box>
     </Box>
   );

@@ -1,11 +1,6 @@
-<<<<<<< HEAD:client/src/components/SignupForm.js
-import React from "react";
-import { useState } from "react";
-=======
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignupForm.css"
->>>>>>> acaec33ead22a4dede603cf62282f21df89a371b:client/src/SignupForm.js
 
 function SignupForm( { getUserProps }) {
   const [formData, setFormData] = useState({ username:"", email:"", profile_pic:"", password:"", password_confirmation:"" })
@@ -20,6 +15,17 @@ function SignupForm( { getUserProps }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData)
+    }).then(r => {
+      if (r.ok) {
+        r.json()
+        .then(user => {
+          localStorage.clear()
+          localStorage.setItem(`developer`, JSON.stringify(user))
+        })
+        navigate('/developer')
+      } else {
+        r.json().then(err => setErrors(err.errors))
+      }
     })
     .then((res) => res.json())
     .then(console.log)

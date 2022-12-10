@@ -1,15 +1,11 @@
-<<<<<<< HEAD:client/src/components/LoginForm.js
-import React from "react";
-import { useState } from "react";
-import { NavLink } from 'react-router-dom'
-=======
 import React, { useState } from "react";
 import { NavLink, useNavigate } from 'react-router-dom'
 import "./index.css"
 import "./LoginForm.css"
->>>>>>> acaec33ead22a4dede603cf62282f21df89a371b:client/src/LoginForm.js
 
 function LoginForm( {position} ) {
+
+  const [errors, setErrors] = useState(null)
   const [formData, setFormData] = useState({
     username:"",
     password:"",
@@ -29,10 +25,25 @@ function LoginForm( {position} ) {
 
     fetch(`/login/${position}`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData)
+    })
+    .then(r => {
+      if (r.ok) {
+        r.json()
+        .then(user => {
+          if (position === 'developer') {
+            localStorage.clear()
+            localStorage.setItem(`developer`, JSON.stringify(user))
+          } else {
+            localStorage.clear()
+            localStorage.setItem(`project_manager`, JSON.stringify(user))
+          }
+          navigate(`/${position}`)
+        })
+      } else {
+        r.json().then(err => setErrors(err.errors))
+      }
     })
     .then(res => res.json())
     .then(console.log)
@@ -46,17 +57,12 @@ function LoginForm( {position} ) {
   const buttons = (position === 'developer') ? (
     <>
       <button className="form-field" > Login </button>
-<<<<<<< HEAD:client/src/components/LoginForm.js
-      <button className="form-field" > 
-        <NavLink className="form-field" to="/signup/developer"> 
-=======
         <p className="unique">
           Don't have an account? &emsp;
           <NavLink style={{textDecoration: 'none', color: '#ffff'}} to="/signup/developer"> 
->>>>>>> acaec33ead22a4dede603cf62282f21df89a371b:client/src/LoginForm.js
-          Signup 
-        </NavLink>
-      </button>
+            Signup 
+          </NavLink>
+        </p>
     </>
   ) :
   (<button className="form-field" > Login </button>)
@@ -71,8 +77,9 @@ function LoginForm( {position} ) {
           <p className="p">A project management tool to help keep your company's projects organized</p>
           <form className="create-project-form" onSubmit={handleSubmit}>
             <input type="text" className="form-field" placeholder="Username" name="username" value={formData.username} onChange={handleChange} />
-            <input type="text" className="form-field" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
-            { buttons }
+            <input type="password" className="form-field" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
+            { buttons } <br />
+            { errors ? errors.map(error => (<h3 style={{color: 'red', fontStyle: 'italic'}} key={error}>{error}</h3>)) : null }
           </form>
         </div>
       </div>

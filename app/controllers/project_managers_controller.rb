@@ -5,7 +5,13 @@ class ProjectManagersController < ApplicationController
     end
 
     def show
-        Projectmanagers = Project_Manger.find(session[user_id])
-        render json: Projectmanagers
+        project_manager = ProjectManager.find(session[:user_id])
+        render json: project_manager
+    end
+
+    private
+
+    def render_not_found_response
+        render json: {error: "User not found!"}, status: :not_found
     end
 end
