@@ -93,10 +93,10 @@ const Sidebar = ( { handleClick, currentUser } ) => {
                   width="100px"
                   height="100px"
                   border="3px"
-                  src={`https://pbs.twimg.com/media/FPsXAFAVcAIJWf4?format=jpg&name=medium`}
+                  src={currentUser.profile_pic ? `${currentUser.profile_pic}`: `https://pbs.twimg.com/media/FPsXAFAVcAIJWf4?format=jpg&name=medium`}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
-                {currentUser.username}
+                Project Lead
               </Box>
               <Box textAlign="center">
                 <Typography
@@ -106,7 +106,9 @@ const Sidebar = ( { handleClick, currentUser } ) => {
                   sx={{ m: "10px 0 0 0" }}
                 >
                 </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}> Project Lead </Typography>
+                <Typography variant="h5" color={colors.greenAccent[500]}> 
+                  {currentUser.username} 
+                </Typography>
               </Box>
             </Box>
           )}

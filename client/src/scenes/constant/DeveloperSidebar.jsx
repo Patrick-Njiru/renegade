@@ -34,7 +34,7 @@ const DeveloperSidebar = ( {currentUser}) => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
-
+  const {username, email, profile_pic=`https://pbs.twimg.com/media/FPsXAFAVcAIJWf4?format=jpg&name=medium`} = currentUser
   return (
     <Box
       sx={{
@@ -91,10 +91,10 @@ const DeveloperSidebar = ( {currentUser}) => {
                   width="100px"
                   height="100px"
                   border="3px"
-                  src={`https://pbs.twimg.com/media/FPsXAFAVcAIJWf4?format=jpg&name=medium`}
+                  src={currentUser.profile_pic ? `${currentUser.profile_pic}`: `https://pbs.twimg.com/media/FPsXAFAVcAIJWf4?format=jpg&name=medium`}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
-                {currentUser.username}
+                 &emsp; Developer
               </Box>
               <Box textAlign="center">
                 <Typography
@@ -105,7 +105,7 @@ const DeveloperSidebar = ( {currentUser}) => {
                 >
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Developer
+                {currentUser.username}
                 </Typography>
               </Box>
             </Box>
