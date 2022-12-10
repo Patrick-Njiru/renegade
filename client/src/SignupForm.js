@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignupForm.css"
 
-function SignupForm( { getUserProps, setUser }) {
-  const [errors, setErrors] = useState(null)
+function SignupForm( { getUserProps }) {
   const [formData, setFormData] = useState({ username:"", email:"", profile_pic:"", password:"", password_confirmation:"" })
-
-  const navigate = useNavigate()
 
   function handleChange(e){ setFormData({ ...formData, [e.target.name]: e.target.value }) }
 
@@ -30,7 +27,8 @@ function SignupForm( { getUserProps, setUser }) {
         r.json().then(err => setErrors(err.errors))
       }
     })
-    
+    .then((res) => res.json())
+    .then(console.log)
 
     setFormData({ username:"", email:"", profile_pic:"", password:"", password_confirmation: "" })
   }
@@ -50,7 +48,6 @@ function SignupForm( { getUserProps, setUser }) {
             <input type="password" className="form-field" placeholder="Confirm Passowrd" name="password_confirmation" 
               value={formData.confirm_password} onChange={handleChange} />
             <button className="form-field"> Signup </button>
-            { errors ? errors.map(error => (<h3 style={{color: 'red', fontStyle: 'italic'}} key={error}>{error}</h3>)) : null }
           </form>
         </div>
       </div>
