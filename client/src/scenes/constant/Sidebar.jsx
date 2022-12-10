@@ -27,7 +27,7 @@ const Item = ({ title, icon, state, setState }) => {
   );
 };
 
-const Sidebar = ( { handleClick } ) => {
+const Sidebar = ( { handleClick, currentUser } ) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -96,6 +96,7 @@ const Sidebar = ( { handleClick } ) => {
                   src={`https://pbs.twimg.com/media/FPsXAFAVcAIJWf4?format=jpg&name=medium`}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
+                {currentUser.username}
               </Box>
               <Box textAlign="center">
                 <Typography
@@ -104,7 +105,6 @@ const Sidebar = ( { handleClick } ) => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Peter Griffin
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}> Project Lead </Typography>
               </Box>

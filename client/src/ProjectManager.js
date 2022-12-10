@@ -14,7 +14,7 @@ import './ProjectManager.css'
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 
-function ProjectManager() {
+function ProjectManager( {currentUser}) {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
 
@@ -28,7 +28,7 @@ function handleClick(info) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-           <Sidebar isSidebar={isSidebar} handleClick = {handleClick} />
+           <Sidebar currentUser={currentUser} isSidebar={isSidebar} handleClick = {handleClick} />
           <main className="content">
             <Topbar setIsSidebar={setIsSidebar}/> 
             {/* { displayedItems } */}
