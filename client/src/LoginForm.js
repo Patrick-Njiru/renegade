@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import "./index.css"
 import "./LoginForm.css"
 
-function LoginForm( {position, setUser} ) {
+function LoginForm( {position} ) {
 
   const [errors, setErrors] = useState(null)
   const [formData, setFormData] = useState({
@@ -24,14 +24,22 @@ function LoginForm( {position, setUser} ) {
 
     fetch(`/login/${position}`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData)
-    }).then(r => {
+    })
+    .then(r => {
       if (r.ok) {
-        r.json().then(user => setUser(user))
-        navigate(`/${position}`)
+        r.json()
+        .then(user => {
+          if (position === 'developer') {
+            localStorage.clear()
+            localStorage.setItem(`developer`, JSON.stringify(user))
+          } else {
+            localStorage.clear()
+            localStorage.setItem(`project_manager`, JSON.stringify(user))
+          }
+          navigate(`/${position}`)
+        })
       } else {
         r.json().then(err => setErrors(err.errors))
       }
@@ -49,8 +57,8 @@ function LoginForm( {position, setUser} ) {
         <p className="unique">
           Don't have an account? &emsp;
           <NavLink style={{textDecoration: 'none', color: '#ffff'}} to="/signup/developer"> 
-          Signup 
-        </NavLink>
+            Signup 
+          </NavLink>
         </p>
     </>
   ) :
@@ -67,7 +75,7 @@ function LoginForm( {position, setUser} ) {
           <form className="create-project-form" onSubmit={handleSubmit}>
             <input type="text" className="form-field" placeholder="Username" name="username" value={formData.username} onChange={handleChange} />
             <input type="password" className="form-field" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
-            { buttons }
+            { buttons } <br />
             { errors ? errors.map(error => (<h3 style={{color: 'red', fontStyle: 'italic'}} key={error}>{error}</h3>)) : null }
           </form>
         </div>

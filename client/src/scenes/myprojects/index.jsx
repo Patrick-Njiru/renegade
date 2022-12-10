@@ -1,15 +1,23 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataTeam } from "../../data/mockData";
 import Header from "../../common/Header";
 
-const MyProjects = () => {
+const MyProjects = ( { position }) => {
+
+  const [projects, setProjects] = useState([])
+
+  useEffect(() => {
+    fetch(`/${position}/me`).then(res => res.json())
+    .then(user => setProjects(user.projects))
+    .then(console.log(projects))
+
+  }, [projects, position])
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "ID" },
+    { field: "id", headerName: "Project" },
     {
       field: "title",
       headerName: "Title",
@@ -19,9 +27,7 @@ const MyProjects = () => {
     {
       field: "description",
       headerName: "Description",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
+      flex: 1,
     },
     {
       field: "deadline",
@@ -72,7 +78,19 @@ const MyProjects = () => {
           },
         }}
       >
-        <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+        {/* DataGrid receives an array of javascript objects that looks like this:
+        [
+          {
+            id: 1,
+            title: "Jon Snow",
+            description: "jonsnow@gmail.com",
+            deadline: 35,
+            progress: "(665)121-5454",
+            developer: "admin",
+          },
+        ]
+        */}
+        <DataGrid checkboxSelection rows={projects} columns={columns} />
       </Box>
     </Box>
   );

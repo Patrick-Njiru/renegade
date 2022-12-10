@@ -1,5 +1,5 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import {useNavigate} from 'react-router-dom'
 import { Box, IconButton, useTheme } from "@mui/material";
 import {  tokens } from "../../theme";
 import InputBase from "@mui/material/InputBase";
@@ -10,15 +10,19 @@ import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import { Typography } from "@mui/material";
 
 
-const Topbar = ( ) => {
+const Topbar = ( {position} ) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const navigate = useNavigate()
 
   function handleClick(e) {
-    console.log(e.target)
+    fetch(`/logout/${position}`, {
+      method: "DELETE",
+      head: "no-content"
+    })
+    .then(localStorage.clear())
+    .then(navigate('/'))
   }
-
-  
 
   return (
     <Box display="flex" justifyContent="space-between" p={2}>

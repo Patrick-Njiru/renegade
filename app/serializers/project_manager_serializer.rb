@@ -1,5 +1,4 @@
 class ProjectManagerSerializer < ActiveModel::Serializer
-  attributes :id, :username, :email, :profile_pic
-  has_many :projects
-  has_many :developers
+  attributes :id, :username, :email
+  has_many :projects, serializer: ProjectSerializer
 end

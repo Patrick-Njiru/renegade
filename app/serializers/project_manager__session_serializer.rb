@@ -1,3 +1,3 @@
 class ProjectManagerSessionSerializer < ActiveModel::Serializer
-  attributes :id, :username, :email, :profile_pic
+  attributes :username, :email, :profile_pic
 end

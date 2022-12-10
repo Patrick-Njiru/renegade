@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
-  resources :projects, only:[:index, :show] 
-  resources :project_managers, only: [:index, :show]
-  resources :developers, only:[:index, :show]
+  resources :projects, only:[:index, :create, :destroy] 
+  resources :project_managers, only: [:index]
+  resources :developers, only:[:index]
 
   # Developer routes
   post '/login/developer', to: 'developer_sessions#create'
-  delete '/logout/developer', to: 'developers#destroy'
+  delete '/logout/developer', to: 'developer_sessions#destroy'
   post 'signup/developer', to: 'developers#create'
+  get '/developers/me', to: 'developers#show'
   
   #Project_Manger routes
   post '/login/project_manager', to: 'project_manager_sessions#create'
   delete '/logout/project_manager', to: 'project_manager_sessions#destroy'
-  get 'project_managers/me', to: 'project_managers#show'
-  get 'developers/me', to: 'developers#show'
+  get '/project_managers/me', to: 'project_managers#show'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
