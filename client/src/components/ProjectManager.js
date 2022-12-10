@@ -36,10 +36,6 @@ function ProjectManager( {currentUser}) {
     else if (view === "Create New Project") { setDisplayedItems( <CreateProjectForm currentUser= {currentUser}/>) }
   }, [view, currentUser])
 
-
-  
-
-
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
