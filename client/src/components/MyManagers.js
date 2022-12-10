@@ -1,8 +1,8 @@
 import React from 'react'
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { tokens } from "./theme";
-import Header from "./common/Header";
+import { tokens } from "../theme";
+import Header from "../common/Header";
 import { useTheme } from "@mui/material";
 
 const MyManagers = ( { managers }) => {
@@ -10,7 +10,10 @@ const MyManagers = ( { managers }) => {
   const colors = tokens(theme.palette.mode);
 
   const columns = [
-    { field: "id", headerName: "Project Manager" },
+    { 
+      field: "id", 
+      headerName: "ID"
+    },
     {
       field: "username",
       headerName: "Name",
@@ -22,16 +25,6 @@ const MyManagers = ( { managers }) => {
       headerName: "Email",
       flex: 1,
     },
-    // {
-    //   field: "progress",
-    //   headerName: "Progress",
-    //   flex: 1,
-    // },
-    // {
-    //   field: "deadline",
-    //   headerName: "Deadline",
-    //   flex: 1,
-    // },
   ];
 
   return (

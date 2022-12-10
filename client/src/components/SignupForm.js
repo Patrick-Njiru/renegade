@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./SignupForm.css"
+import "../styles/SignupForm.css"
 
 function SignupForm( { getUserProps }) {
   const [formData, setFormData] = useState({ username:"", email:"", profile_pic:"", password:"", password_confirmation:"" })
