@@ -10,6 +10,12 @@ class ProjectsController < ApplicationController
         render json: project, status: :created
     end
 
+    def update 
+        project = Project.find(params[:id])
+        project.update!(project_params)
+        render json: project, status: :ok
+    end
+
 
     def destroy
         project = Project.find(params[:id])
