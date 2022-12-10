@@ -32,7 +32,7 @@ function ProjectManager( {currentUser}) {
   useEffect(()=>{
     if (view === "Dashboard") { setDisplayedItems( <Dashboard /> ) }
     else if (view === "My Projects") { setDisplayedItems( <MyProjects position='project_managers' /> ) }
-    else if (view === "My Developers") { setDisplayedItems( <MyDevelopers developers={currentUser.developers} /> ) }
+    else if (view === "My Developers") { setDisplayedItems( <MyDevelopers /> ) }
     else if (view === "Create New Project") { setDisplayedItems( <CreateProjectForm currentUser= {currentUser}/>) }
   }, [view, currentUser])
 
