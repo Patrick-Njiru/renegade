@@ -2,18 +2,18 @@ import React from 'react'
 import { useState, useEffect } from "react";
 
 // Import components
-import Topbar from "./scenes/constant/Topbar";
-import Sidebar from "./scenes/constant/Sidebar";
-import Dashboard from "./scenes/dashboard";
-import MyProjects from "./scenes/myprojects";
-import MyDevelopers from "./scenes/mydevelopers";
-import CreateProjectForm from "./scenes/create-project-form";
+import Topbar from "../scenes/constant/Topbar";
+import Sidebar from "../scenes/constant/Sidebar";
+import Dashboard from "../scenes/dashboard";
+import MyProjects from "../scenes/myprojects";
+import MyDevelopers from "../scenes/mydevelopers";
+import CreateProjectForm from "../scenes/create-project-form";
 
 
 // Styling
-import './ProjectManager.css'
+import '../styles/ProjectManager.css'
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { ColorModeContext, useMode } from "./theme";
+import { ColorModeContext, useMode } from "../theme";
 
 function ProjectManager( {currentUser}) {
 
@@ -32,7 +32,7 @@ function ProjectManager( {currentUser}) {
   useEffect(()=>{
     if (view === "Dashboard") { setDisplayedItems( <Dashboard /> ) }
     else if (view === "My Projects") { setDisplayedItems( <MyProjects position='project_managers' /> ) }
-    else if (view === "My Developers") { setDisplayedItems( <MyDevelopers developers={currentUser.developers} /> ) }
+    else if (view === "My Developers") { setDisplayedItems( <MyDevelopers /> ) }
     else if (view === "Create New Project") { setDisplayedItems( <CreateProjectForm currentUser= {currentUser}/>) }
   }, [view, currentUser])
 
