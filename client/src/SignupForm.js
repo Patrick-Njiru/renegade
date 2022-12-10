@@ -20,7 +20,11 @@ function SignupForm( { getUserProps, setUser }) {
       body: JSON.stringify(formData)
     }).then(r => {
       if (r.ok) {
-        r.json().then(user => setUser(user))
+        r.json()
+        .then(user => {
+          localStorage.clear()
+          localStorage.setItem(`developer`, JSON.stringify(user))
+        })
         navigate('/developer')
       } else {
         r.json().then(err => setErrors(err.errors))
