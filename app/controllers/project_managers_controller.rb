@@ -13,6 +13,6 @@ class ProjectManagersController < ApplicationController
     private
 
     def render_not_found_response
-        render json: {error: "Hero not found"}, status: :not_found
+        render json: {error: "User not found!"}, status: :not_found
     end
 end

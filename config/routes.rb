@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   post '/login/developer', to: 'developer_sessions#create'
   delete '/logout/developer', to: 'developer_sessions#destroy'
   post 'signup/developer', to: 'developers#create'
-  get 'developers/me', to: 'developers#show'
+  get '/developers/me', to: 'developers#show'
   
   #Project_Manger routes
   post '/login/project_manager', to: 'project_manager_sessions#create'
   delete '/logout/project_manager', to: 'project_manager_sessions#destroy'
-  get 'project_managers/me', to: 'project_managers#show'
+  get '/project_managers/me', to: 'project_managers#show'
 
 end
