@@ -49,7 +49,7 @@ function ProjectManager( {currentUser}) {
         <div className="app">
            <Sidebar currentUser={currentUser} isSidebar={isSidebar} handleSidebarClick= {handleSidebarClick} />
           <main className="content">
-            <Topbar setIsSidebar={setIsSidebar}/> 
+            <Topbar position='project_manager' setIsSidebar={setIsSidebar}/> 
             { displayedItems }
           </main>
         </div>

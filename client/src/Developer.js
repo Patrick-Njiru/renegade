@@ -44,7 +44,7 @@ function Developer( {currentUser}) {
         <div className="app">
            <DeveloperSidebar currentUser={currentUser} isSidebar={isSidebar} handleDeveloperSidebarClick={ handleDeveloperSidebarClick }/>
           <main className="content">
-            <Topbar setIsSidebar={setIsSidebar}/> 
+            <Topbar position='developer' setIsSidebar={setIsSidebar}/> 
             { displayedItems }
             </main>
         </div>
