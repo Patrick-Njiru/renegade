@@ -169,6 +169,7 @@ git push heroku
 N/B This project will be deployed to Heroku soon be ware it can't work without opening the servers both client and the backend servers.
 
 ## Future plans
+Incorporate search bar and notifications functionality.
 Create a chat box for both developer and manager.
 Create a meeting schedule/calendar for developers and  project-managers (for remote workers).
 
