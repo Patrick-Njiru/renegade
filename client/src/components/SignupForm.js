@@ -40,12 +40,11 @@ function SignupForm( { getUserProps, setUser }) {
       <div className="main">
         <div className="create-project-form-container">
           <h2 className="title">RENEGADE</h2>
-          {/* <img src=""></img> */}
           <p className="p">Welcome developer, Sign up Here.</p>
           <form className="create-project-form" onSubmit={handleSubmit}>
             <input type="text" className="form-field" placeholder="Username" name="username" value={formData.username} onChange={handleChange} />
             <input type="text" className="form-field" placeholder="Email" name="email" value={formData.email} onChange={handleChange} />
-            <input type="text" className="form-field" placeholder="Profile_pic" name="profile_pic" value={formData.profile_pic} onChange={handleChange} />
+            <input type="text" className="form-field" placeholder="Profile_pic_url" name="profile_pic" value={formData.profile_pic} onChange={handleChange} />
             <input type="password" className="form-field" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
             <input type="password" className="form-field" placeholder="Confirm Passowrd" name="password_confirmation" 
               value={formData.confirm_password} onChange={handleChange} />

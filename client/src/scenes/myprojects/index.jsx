@@ -6,10 +6,9 @@ import Button from '@mui/material/Button';
 import { tokens } from "../../theme";
 import Header from "../../common/Header";
 
-const MyProjects = ( { position }) => {
+const MyProjects = ( { position, handleUpdate }) => {
 
   const [projects, setProjects] = useState([])
-  const [errors, setErrors] = useState([])
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -18,22 +17,6 @@ const MyProjects = ( { position }) => {
     .then(user => setProjects(user.projects))
   }, [projects, position])
 
-  const handleUpdate = (project) => {
-    
-    fetch('/projects/'+ project.id , {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(project)
-    })
-    .then(r => {
-      if (r.ok) alert("Updated successfully")
-      else {
-        alert('Error updating data! Please try again')
-        r.json().then(err => setErrors(err.errors))
-        console.log(errors)
-      }
-    })
-  }
 
   const handleDelete = (id) => {
     fetch('/projects/'+id, {
@@ -50,7 +33,7 @@ const MyProjects = ( { position }) => {
                 color="primary"
                 size="small"
                 onClick={(e) => {
-                    handleUpdate(params.row)
+                  handleUpdate(params.row)
                 }}
             >
               Update
