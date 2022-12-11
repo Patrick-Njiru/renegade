@@ -13,7 +13,6 @@ import { ColorModeContext, useMode } from "../theme";
 
 function Developer( {currentUser}) {
 
-
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
   const [view, setView] = useState("")
@@ -26,6 +25,10 @@ function Developer( {currentUser}) {
     let clickedItem = e.target.textContent
     setView(clickedItem)
   }
+
+  
+  // When page loads first time, change the state "view", so that the page renders
+  useEffect(()=>{setView("My Projects")}, [])
 
  // Conditional rendering based on what sidebar component has been clicked
   useEffect(()=>{

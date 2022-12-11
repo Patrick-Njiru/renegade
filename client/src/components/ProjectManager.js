@@ -28,6 +28,9 @@ function ProjectManager( {currentUser}) {
     setView(clickedItem)
   }
 
+  // When page loads first time, change the state "view", so that the page renders
+  useEffect(()=>{setView("Dashboard")}, [])
+
   // Conditional rendering based on what sidebar component has been clicked
   useEffect(()=>{
     if (view === "Dashboard") { setDisplayedItems( <Dashboard /> ) }
