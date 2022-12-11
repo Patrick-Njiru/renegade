@@ -5,6 +5,7 @@ import Topbar from "../scenes/constant/Topbar";
 import DeveloperSidebar from "../scenes/constant/DeveloperSidebar";
 import MyProjects from "../scenes/myprojects";
 import MyManagers from './MyManagers';
+import UpdateProjectForm from "./UpdateProjectForm";
 
 // Styling
 import '../styles/Developer.css'
@@ -13,11 +14,10 @@ import { ColorModeContext, useMode } from "../theme";
 
 function Developer( {currentUser}) {
 
-
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
   const [view, setView] = useState("")
-  const [displayedItems, setDisplayedItems] = useState(<MyProjects position='developers' />)
+  const [displayedItems, setDisplayedItems] = useState(<MyProjects handleUpdate={handleUpdate} position='developers' />)
 
 
 
@@ -27,10 +27,20 @@ function Developer( {currentUser}) {
     setView(clickedItem)
   }
 
+  function handleUpdate(project) {
+    setView('Update Project')
+    localStorage.setItem(`data`, JSON.stringify(project))
+  }
+
+  
+  // When page loads first time, change the state "view", so that the page renders
+  useEffect(()=>{setView("My Projects")}, [])
+
  // Conditional rendering based on what sidebar component has been clicked
   useEffect(()=>{
-    if (view === "My Projects") { setDisplayedItems( <MyProjects position='developers' /> ) }
+    if (view === "My Projects") { setDisplayedItems( <MyProjects position='developers' handleUpdate={handleUpdate} /> ) }
     else if (view === "My Managers") { setDisplayedItems( <MyManagers managers = {currentUser.project_managers} /> ) }
+    else if (view === "Update Project") { setDisplayedItems( <UpdateProjectForm position='developers' />) }
    
   }, [view, currentUser])
 
