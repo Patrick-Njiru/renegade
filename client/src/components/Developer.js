@@ -26,13 +26,17 @@ function Developer( {currentUser}) {
     setView(clickedItem)
   }
 
+  function handleUpdate(project) {
+    console.log(project)
+  }
+
   
   // When page loads first time, change the state "view", so that the page renders
   useEffect(()=>{setView("My Projects")}, [])
 
  // Conditional rendering based on what sidebar component has been clicked
   useEffect(()=>{
-    if (view === "My Projects") { setDisplayedItems( <MyProjects position='developers' /> ) }
+    if (view === "My Projects") { setDisplayedItems( <MyProjects position='developers' handleUpdate={handleUpdate}/> ) }
     else if (view === "My Managers") { setDisplayedItems( <MyManagers managers = {currentUser.project_managers} /> ) }
    
   }, [view, currentUser])

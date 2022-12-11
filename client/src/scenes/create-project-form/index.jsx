@@ -138,8 +138,6 @@ const CreateProjectForm = ({currentUser}) => {
                 sx={{ gridColumn: "span 4" }}
               >id
                 {developers.map(dev => (<option  key={dev.id} value={`${dev.id}`}>{dev.username}</option>))}
-                {/* <option value="react">React</option>
-                <option value="angular">Angular</option>   */}
               </Field>
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
