@@ -1,21 +1,27 @@
-# README
-# Project
 
-**Project Name**
-   
-   RENEGADE
+# Project Title
+RENEGADE: A project management tool to help keep your company's projects well organized
 
-**Problem Statement:**
+# Project Authors
 
-Many developers and managers are having a hectic time to meet the desires of thir employers  which may lead to various consequences.
-Some may end up even fired from work yet they have the set of skills needed.
+**Frontend:**
 
-**Solution:**
+Kevin Irungu
 
-As  software developers we sat down and decided to help fellow developers to manage their work and time.
-This is a project that entails the project-managers and their developers.Its main aim is to organise the managers and their developers to hold a good  state of control of their projects.In addition, its a handy tool for managing ones work.
+Stephen Njuguna
 
-## Install
+Ronald Kubasu
+
+**Backend:**
+
+Allan Ngugi
+
+Patrick Njiru
+
+# About the product
+Renegade is an intuitive project management tool, designed to optimize the process of project management. It offers authorized project managers the ability to login and create, assign, update and delete projects, and to track progress, as well as view developer's contact information. It also provides authorized developers the ability to log in and view their assigned projects and their respective managers. Furthermore, new developers can join the Renegade pool of developers by signing up. Both a project manager and developer may also log out once done using the application. This is all handled in a user-friendly and efficient manner.
+
+## Set up
 
 ### Clone the repository
 
@@ -48,25 +54,24 @@ bundle install
 
 ### Set environment variables
 
-Incase of any issues experienced in installig dependancies.
+Incase of any issues experienced in installing dependancies.
 
  contact the involved developers:
  
  **UI(Frontend):**
  
-Kevin Irungu,
+Kevin Irungu - https://github.com/K-Irungu
 
-Stephen Njuguna,
+Stephen Njuguna - https://github.com/Stephen-Njuguna-Njambi-Moringa
 
-Ronald Kubasu,
+Ronald Kubasu - https://github.com/Ronaldkubasu
 
 **Backend**
 
-Allan Ngugi,
+Allan Ngugi - https://github.com/Allan-Ngugi
 
-Patrick Njiru
+Patrick Njiru - https://github.com/Patrick-Njiru
 
- (sensitive data).
 
 ### Initialize the database
 
@@ -87,7 +92,7 @@ npm start
 rails s
 ```
 
-## Deliverables
+## Deliverables (Including user stories)
 
 **Home Page**
 
@@ -101,50 +106,44 @@ rails s
  
  ![Login Developer](https://user-images.githubusercontent.com/105485948/206862845-52263cc1-1bec-4e7e-b8b2-203dad7ddf14.jpeg)
 
-## They will be directed to their specific unit of work where they can see as follows:
+## Project Manager View
+**Dashboard:**
 
-**Project-Manager:**
+Here, the manager can view all the information regarding every project in the database.
 
-1. He/She can see the projects they have and the developers involved, the progress they have with the projects, description, title and lastly the deadline of the project.
-2. A project-manager can also create a new project and assign a developer.
+**My Projects:**
+
+Here, the manager can view all the projects that they are in charge of, edit and update any details regarding a selected project, and delete a selected project.
+
+**My Developers:** 
+
+Here, the manager can view the contact information for every developer that they have collaborated with to facilitate communication.
+
+**Create New Project**
+
+Here, the manager can create a new project and assign it a developer. Having been created by the logged in manager, the project is directly associated with them and can be found under "MY Projects"
 
 ![Project-Manager login](https://user-images.githubusercontent.com/105485948/206862894-fd1d4a12-08f6-45e7-8c70-89f87ae34038.jpeg)
 
-Developer:
-1. He/Se can see the projects they have.  
-2. A developer can update their status with their project and also delete when done.
-3. They also have a leeway of their progress and  deadline of the project.
+## Developer View
+**My Projects:**
+
+Here, the developer can view all the projects that they have been assigned.
+
+**My Managers:** 
+
+Here, the developer can view the contact information for every manager that they have collaborated with to facilitate communication.
 
 ![Developer projects page](https://user-images.githubusercontent.com/105485948/206862915-3fae3297-c0b8-44fb-af40-195b95ed94f1.jpeg)
-
-4. A developer can also see their assigned manager.
-
 ![Developer manager page](https://user-images.githubusercontent.com/105485948/206863454-bf6fe759-4186-4980-8954-0dad12649e1b.jpeg)
 
-5. After that they can logout at their pleasure.
 
+## Database Relationships
 
+Project_Manager -< Projects >- Developer
 
-**Relationships**
-
-N/B don't copy this its already incorporated in the models code.
-
-Developer:
-
-    has_many :projects
-    has_many :project_managers, through: :projects
-
-Project manager:
-
-    has_many  :projects
-    has_many  :developers, through: :projects
-
-Project:
-
-    belongs_to :project_manager
-    belongs_to :developer
+## Deployment
 ### With Heroku pipeline (recommended)
-
 Push to Heroku staging remote:
 
 ```shell
@@ -169,14 +168,9 @@ git push heroku
 
 N/B This project will be deployed to Heroku soon be ware it can't work without opening the servers both client and the backend servers.
 
-#### To Be Done.
+## Future plans
+Create a chat box for both developer and manager.
+Create a meeting schedule/calendar for developers and  project-managers (for remote workers).
 
-1. Create a chat box for both developer and manager.
-2. Create a meeting schedule for developers and  project-managers (for remote workers).
-3. And many more features.
-
-THANKS IN ADVANCE,
-
-ENJOY THE PRODUCT.
 
 
