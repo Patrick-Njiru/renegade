@@ -6,56 +6,55 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from '../common/Header'
 
 
-
-
-
-
-function UpdateProjectForm( currentUser ) {
+function UpdateProjectForm( {position}) {
   const isNonMobile = useMediaQuery("(min-width:600px)");
-  const [error, setErrors] = useState([])
+  // const [errors, setErrors] = useState([])
   const [developers, setDevelopers] = useState([])
 
+  useEffect(() => {
+    fetch('/developers').then(r => r.json()).then(setDevelopers)
+  }, [])
 
+  const data = JSON.parse(localStorage.getItem(`data`))
+  const myDetails = JSON.parse(localStorage.getItem(`project_manager`))
   const initialValues = {
-    project_manager_id: currentUser.id,
-    title: "",
-    description: "",
-    deadline: "",
-    progress: "",
-    developer_id: ""
-  };
+      title: data.title,
+      description: '',
+      deadline: data.deadline,
+      developer_id: data.developer_id
+    } 
+  // let initialValues = {}
 
+  // position === "project_managers" ? myDetails = JSON.parse(localStorage.getItem(`project_manager`)) :
+  // myDetails = JSON.parse(localStorage.getItem(`developer`))
+
+  // position === 'project_managers' ? initialValues = {
+  //   title: data.title,
+  //   description: '',
+  //   deadline: data.deadline,
+  //   developer_id: data.developer_id
+  // } 
+  // : initialValues = {progress: data.progress }
+
+  // const myId = (position === 'project_managers') ? (project_manager_id: me.id) : ( developer_id: me.id) 
+  
   const handleFormSubmit = (values) => {
-  //   fetch('/projects', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(values),
-  //   }).then(r => {
-  //     if (r.ok) {
-  //       r.json().then(project => currentUser.projects << project)
-  //   } else {
-  //     r.json().then(err => setErrors(err.errors))
-  //   }
-  // })
+    // console.log(data)
+    fetch('/projects/'+ data.id, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({...values, project_manager_id: myDetails.id})
+    })
+    .then(r => r.ok ? alert("Project Updated Successfully") : r.json().then(err => alert(err.errors)))
 }
-const checkoutSchema = yup.object().shape({
-  title: yup.string().required("required"),
-  description: yup.string().required("required"),
-  deadline: yup.string().required("required"),
-  progress: yup.string().required("required"),
-  developer_id: yup.string().required("required"),
-});
-
-
 
   return (
     <Box m="20px">
-      <Header title="CREATE PROJECT" subtitle="Create a New Project to Manage" />
+      <Header title="UPDATE PROJECT" subtitle="Update the Project" />
 
       <Formik
         onSubmit={handleFormSubmit}
         initialValues={initialValues}
-        validationSchema={checkoutSchema}
       >
         {({
           values,
@@ -81,7 +80,7 @@ const checkoutSchema = yup.object().shape({
                 label="Title"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.title}
+                value={values.title ? values.title : data.title}
                 name="title"
                 error={!!touched.title && !!errors.title}
                 helperText={touched.title && errors.title}
@@ -107,23 +106,10 @@ const checkoutSchema = yup.object().shape({
                 label="Deadline"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.deadline}
+                value={values.deadline ? values.deadline : data.deadline}
                 name="deadline"
                 error={!!touched.deadline && !!errors.deadline}
                 helperText={touched.deadline && errors.deadline}
-                sx={{ gridColumn: "span 4" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Progress"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.progress}
-                name="progress"
-                error={!!touched.progress && !!errors.progress}
-                helperText={touched.progress && errors.progress}
                 sx={{ gridColumn: "span 4" }}
               />
               <Field
@@ -133,7 +119,7 @@ const checkoutSchema = yup.object().shape({
                 label="Developer"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.developer_id}
+                value={values.developer_id ? values.developer_id : data.developer_id}
                 name='developer_id'
 
                 sx={{ gridColumn: "span 4" }}
@@ -143,10 +129,10 @@ const checkoutSchema = yup.object().shape({
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
-                Create New Project
+                Update Project
               </Button>
             </Box>
-            {error.map(error => (<h3 style={{color: 'red', fontStyle: 'italic'}} key={error}>{error}</h3>))}
+            {/* { errors ? errors.map(error => (<h3 style={{color: 'red', fontStyle: 'italic'}} key={error}>{error}</h3>)) : null } */}
           </form>
         )}
       </Formik>

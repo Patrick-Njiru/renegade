@@ -8,6 +8,7 @@ import Dashboard from "../scenes/dashboard";
 import MyProjects from "../scenes/myprojects";
 import MyDevelopers from "../scenes/mydevelopers";
 import CreateProjectForm from "../scenes/create-project-form";
+import UpdateProjectForm from './UpdateProjectForm'
 
 
 // Styling
@@ -22,6 +23,11 @@ function ProjectManager( {currentUser}) {
   const [view, setView] = useState("")
   const [displayedItems, setDisplayedItems] = useState(<Dashboard />)
 
+  function handleUpdate(project) {
+    setView('Update Project')
+    localStorage.setItem(`data`, JSON.stringify(project))
+  }
+
   // This receives information from the Sidebar on what sidebar item has been clicked and stores it in state
   function handleSidebarClick(e) {
     let clickedItem = e.target.textContent
@@ -34,9 +40,11 @@ function ProjectManager( {currentUser}) {
   // Conditional rendering based on what sidebar component has been clicked
   useEffect(()=>{
     if (view === "Dashboard") { setDisplayedItems( <Dashboard /> ) }
-    else if (view === "My Projects") { setDisplayedItems( <MyProjects position='project_managers' /> ) }
+    else if (view === "My Projects") { setDisplayedItems( <MyProjects position='project_managers' handleUpdate={handleUpdate} /> ) }
     else if (view === "My Developers") { setDisplayedItems( <MyDevelopers /> ) }
     else if (view === "Create New Project") { setDisplayedItems( <CreateProjectForm currentUser= {currentUser}/>) }
+    else if (view === "Update Project") { setDisplayedItems( <UpdateProjectForm position='project_managers' />) }
+
   }, [view, currentUser])
 
   return (

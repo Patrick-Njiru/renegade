@@ -29,13 +29,6 @@ const CreateProjectForm = ({currentUser}) => {
     }
   })
 }
-  const checkoutSchema = yup.object().shape({
-    title: yup.string().required("required"),
-    description: yup.string().required("required"),
-    deadline: yup.string().required("required"),
-    progress: yup.string().required("required"),
-    developer_id: yup.string().required("required"),
-  });
 
   const initialValues = {
     project_manager_id: currentUser.id,
@@ -53,7 +46,6 @@ const CreateProjectForm = ({currentUser}) => {
       <Formik
         onSubmit={handleFormSubmit}
         initialValues={initialValues}
-        validationSchema={checkoutSchema}
       >
         {({
           values,
