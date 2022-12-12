@@ -6,17 +6,17 @@ RENEGADE: A project management tool to help keep your company's projects well or
 
 **Frontend:**
 
-Kevin Irungu - https://github.com/K-Irungu
+- Kevin Irungu - https://github.com/K-Irungu
 
-Stephen Njuguna -  https://github.com/Stephen-Njuguna-Njambi-Moringa
+- Stephen Njuguna -  https://github.com/Stephen-Njuguna-Njambi-Moringa
 
-Ronald Kubasu - https://github.com/Ronaldkubasu
+- Ronald Kubasu - https://github.com/Ronaldkubasu
 
 **Backend:**
 
-Allan Ngugi - https://github.com/Allan-Ngugi
+- Allan Ngugi - https://github.com/Allan-Ngugi
 
-Patrick Njiru - https://github.com/Patrick-Njiru
+- Patrick Njiru - https://github.com/Patrick-Njiru
 
 # About the product
 Renegade is an intuitive project management tool, designed to optimize the process of project management. It offers authorized project managers the ability to login and create, assign, update and delete projects, and to track progress, as well as view developer's contact information. It also provides authorized developers the ability to log in and view their assigned projects and their respective managers. Furthermore, new developers can join the Renegade pool of developers by signing up. Both a project manager and developer may also log out once done using the application. This is all handled in a user-friendly and efficient manner.
@@ -125,9 +125,11 @@ $ npm start
 Project_Manager -< Projects >- Developer
 
 ## Future plans
-Incorporate search bar and notifications functionality.
-Create a chat box for both developer and manager.
-Create a meeting schedule/calendar for developers and  project-managers (for remote workers).
+- Incorporate search bar and notifications functionality.
+
+- Create a chat box for both developer and manager.
+
+- Create a meeting schedule/calendar for developers and  project-managers (for remote workers).
 
 ## License and Copyright
 
