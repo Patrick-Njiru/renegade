@@ -34,9 +34,11 @@ function LoginForm( {position} ) {
           if (position === 'developer') {
             localStorage.clear()
             localStorage.setItem(`developer`, JSON.stringify(user))
+            console.log("Here is our user", user);
           } else {
             localStorage.clear()
             localStorage.setItem(`project_manager`, JSON.stringify(user))
+            console.log("Here is our user", user);
           }
           navigate(`/${position}`)
         })

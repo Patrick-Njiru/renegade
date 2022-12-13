@@ -5,7 +5,7 @@ import Topbar from "../scenes/constant/Topbar";
 import DeveloperSidebar from "../scenes/constant/DeveloperSidebar";
 import MyProjects from "../scenes/myprojects";
 import MyManagers from './MyManagers';
-import UpdateProjectForm from "./UpdateProjectForm";
+// import UpdateProjectForm from "./UpdateProjectForm";
 
 // Styling
 import '../styles/Developer.css'
