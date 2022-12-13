@@ -5,7 +5,7 @@ import Topbar from "../scenes/constant/Topbar";
 import DeveloperSidebar from "../scenes/constant/DeveloperSidebar";
 import MyProjects from "../scenes/myprojects";
 import MyManagers from './MyManagers';
-import UpdateProjectForm from "./UpdateProjectForm";
+// import UpdateProjectForm from "./UpdateProjectForm";
 
 // Styling
 import '../styles/Developer.css'
@@ -40,7 +40,7 @@ function Developer( {currentUser}) {
   useEffect(()=>{
     if (view === "My Projects") { setDisplayedItems( <MyProjects position='developers' handleUpdate={handleUpdate} /> ) }
     else if (view === "My Managers") { setDisplayedItems( <MyManagers managers = {currentUser.project_managers} /> ) }
-    else if (view === "Update Project") { setDisplayedItems( <UpdateProjectForm position='developers' />) }
+    // else if (view === "Update Project") { setDisplayedItems( <UpdateProjectForm position='developers' />) }
    
   }, [view, currentUser])
 

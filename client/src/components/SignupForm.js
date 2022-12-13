@@ -24,6 +24,7 @@ function SignupForm( { getUserProps, setUser }) {
         .then(user => {
           localStorage.clear()
           localStorage.setItem(`developer`, JSON.stringify(user))
+          console.log("Here is our user", user)
         })
         navigate('/developer')
       } else {
