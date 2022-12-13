@@ -20,8 +20,9 @@ const Topbar = ( {position} ) => {
       method: "DELETE",
       head: "no-content"
     })
-    .then(localStorage.clear())
-    .then(navigate('/'))
+    .then(console.log("Here is our user", {})
+    )
+    .then( localStorage.clear()).then(navigate('/'))
   }
 
   return (
