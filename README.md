@@ -12,11 +12,12 @@ RENEGADE: A project management tool to help keep your company's projects well or
 
 - Ronald Kubasu - https://github.com/Ronaldkubasu
 
+- Patrick Njiru - https://github.com/Patrick-Njiru
+
 **Backend:**
 
 - Allan Ngugi - https://github.com/Allan-Ngugi
 
-- Patrick Njiru - https://github.com/Patrick-Njiru
 
 # About the product
 Renegade is an intuitive project management tool, designed to optimize the process of project management. It offers authorized project managers the ability to login and create, assign, update and delete projects, and to track progress, as well as view developer's contact information. It also provides authorized developers the ability to log in and view their assigned projects and their respective managers. Furthermore, new developers can join the Renegade pool of developers by signing up. Both a project manager and developer may also log out once done using the application. This is all handled in a user-friendly and efficient manner.
