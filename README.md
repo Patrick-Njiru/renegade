@@ -3,6 +3,9 @@
 RENEGADE: A project management tool to help keep your company's projects well organized
 
 # Project Authors
+**Scrum Master**
+
+- Patrick Njiru - https://github.com/Patrick-Njiru
 
 **Frontend:**
 
@@ -12,13 +15,13 @@ RENEGADE: A project management tool to help keep your company's projects well or
 
 - Ronald Kubasu - https://github.com/Ronaldkubasu
 
-- Patrick Njiru - https://github.com/Patrick-Njiru
+- Patrick Njiru
 
 **Backend:**
 
 - Allan Ngugi - https://github.com/Allan-Ngugi
-- 
-- Patrick Njiru - https://github.com/Patrick-Njiru
+
+- Patrick Njiru
 
 
 
