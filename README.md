@@ -17,6 +17,9 @@ RENEGADE: A project management tool to help keep your company's projects well or
 **Backend:**
 
 - Allan Ngugi - https://github.com/Allan-Ngugi
+- 
+- Patrick Njiru - https://github.com/Patrick-Njiru
+
 
 
 # About the product
