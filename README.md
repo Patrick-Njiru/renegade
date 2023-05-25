@@ -127,6 +127,9 @@ $ npm start
 
 ![Developer manager page](https://user-images.githubusercontent.com/105485948/206863454-bf6fe759-4186-4980-8954-0dad12649e1b.jpeg)
 
+## Live Page
+This system requires a database running on the background
+
 ## Database Relationships
 
 Project_Manager -< Projects >- Developer
